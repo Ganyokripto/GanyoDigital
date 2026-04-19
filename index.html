@@ -3,59 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GanyoKripto - Fast Data & DeFi</title>
+    <title>GanyoKripto - Data, DeFi & Academy</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        :root { --primary: #0056b3; --bg: #f8f9fa; --text: #333; }
-        body { font-family: 'Segoe UI', Tahoma, sans-serif; margin: 0; background: var(--bg); color: var(--text); line-height: 1.6; }
+        :root { --primary: #0056b3; --bg: #f8f9fa; --text: #333; --secondary: #25d366; }
+        body { font-family: 'Segoe UI', Tahoma, sans-serif; margin: 0; background: var(--bg); color: var(--text); line-height: 1.6; scroll-behavior: smooth; }
         header { background: #fff; padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
         .logo { font-size: 1.5rem; font-weight: bold; color: var(--primary); }
         .hero { background: linear-gradient(135deg, var(--primary), #00a8ff); color: white; padding: 5rem 5%; text-align: center; }
         .hero h1 { margin: 0; font-size: 2.8rem; }
-        .services { padding: 4rem 5%; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
-        .card { background: white; padding: 2.5rem; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); text-align: center; transition: 0.3s; }
-        .card:hover { transform: translateY(-10px); }
+        .services { padding: 4rem 5%; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
+        .card { background: white; padding: 2.5rem; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); text-align: center; transition: 0.3s; display: flex; flex-direction: column; justify-content: space-between; }
+        .card:hover { transform: translateY(-10px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
         .card i { font-size: 3.5rem; color: var(--primary); margin-bottom: 1.5rem; }
-        .btn { display: inline-block; background: var(--primary); color: white; padding: 0.9rem 2.5rem; border-radius: 30px; text-decoration: none; font-weight: bold; margin-top: 1rem; }
+        .btn { display: inline-block; background: var(--primary); color: white; padding: 0.9rem 2rem; border-radius: 30px; text-decoration: none; font-weight: bold; margin-top: auto; }
+        .whatsapp-float { position: fixed; bottom: 20px; right: 20px; background: var(--secondary); color: white; width: 60px; height: 60px; border-radius: 50%; text-align: center; font-size: 30px; box-shadow: 2px 2px 10px rgba(0,0,0,0.2); z-index: 10000; display: flex; align-items: center; justify-content: center; text-decoration: none; }
         .footer { background: #1a1a1a; color: #ddd; text-align: center; padding: 3rem; margin-top: 4rem; }
     </style>
 </head>
 <body>
     <header>
         <div class="logo">GanyoKripto</div>
-        <nav>Digital Solutions</nav>
+        <nav>DeFi & Data Solutions</nav>
     </header>
 
     <section class="hero">
-        <h1>Fast & Secure Data Bundles</h1>
-        <p>Connecting you to the digital world through reliable DeFi and Data services.</p>
-        <a href="#order" class="btn">Order Now</a>
+        <h1>Welcome to GanyoKripto</h1>
+        <p>Your Gateway to High-Speed Data, DeFi Assets, and Blockchain Education.</p>
+        <a href="#order" class="btn" style="background: white; color: var(--primary);">Explore Services</a>
     </section>
 
     <div class="services" id="order">
+        <!-- Data Section -->
         <div class="card">
             <i class="fas fa-bolt"></i>
             <h3>Data Bundles</h3>
-            <p>Instant MTN, Telecel, and AirtelTigo bundles at the best rates in Ghana.</p>
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSerY-T57z-LzSI2yCQ2Z-NbHC1E6oe5tdWG2DQzeYxyPtRg1A/viewform?usp=header" class="btn">Order Data</a>
+            <p>Fast MTN, Telecel, and AirtelTigo data at affordable rates.</p>
+            <a href="YOUR_GOOGLE_FORM_LINK" class="btn">Order Data</a>
         </div>
+
+        <!-- DeFi Portal Section -->
         <div class="card">
-            <i class="fas fa-ethereum"></i>
-            <h3>DeFi Portal</h3>
-            <p>Secure access to decentralized finance and NFT management tools.</p>
-            <a href="#" class="btn">Connect</a>
+            <i class="fas fa-chart-line"></i>
+            <h3>Digital DeFi Portal</h3>
+            <p>Access your DeFi tools, NFTs, and strategy dashboard.</p>
+            <a href="https://app.tactics-strategy.com/r/C7lrUMxqZF" target="_blank" class="btn">Enter Portal</a>
         </div>
+
+        <!-- Academy Section -->
         <div class="card">
-            <i class="fas fa-network-wired"></i>
-            <h3>Networking</h3>
-            <p>Join a community of digital entrepreneurs and grow your network.</p>
-            <a href="#" class="btn">https://chat.whatsapp.com/Dmko91cY4OA93VfBfweaVf</a>
+            <i class="fas fa-graduation-cap"></i>
+            <h3>Blockchain Academy</h3>
+            <p>Learn everything about Crypto, NFTs, and Decentralized Finance.</p>
+            <a href="https://chat.whatsapp.com/Dmko91cY4OA93VfBfweaVf" target="_blank" class="btn">Join Academy</a>
+        </div>
+
+        <!-- Networking/Community Section -->
+        <div class="card">
+            <i class="fas fa-users"></i>
+            <h3>WhatsApp Community</h3>
+            <p>Get daily updates and network with other digital entrepreneurs.</p>
+            <a href="https://chat.whatsapp.com/Dmko91cY4OA93VfBfweaVf" target="_blank" class="btn">Join Group</a>
         </div>
     </div>
 
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
     <div class="footer">
         <p>&copy; 2026 GanyoKripto. Leading the Digital Future.</p>
-        <p>Email: info@ganyokripto.com | Powered by GanyoKripto Digital</p>
+        <p>Email: info@ganyokripto.com | WhatsApp: +233 24 236 6444</p>
     </div>
 </body>
 </html>
