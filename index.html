@@ -3,77 +3,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GanyoKripto - Data, DeFi & Academy</title>
+    <title>Ganyo-Digital Service | Knowledge is Power</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        :root { --primary: #0056b3; --bg: #f8f9fa; --text: #333; --secondary: #25d366; }
-        body { font-family: 'Segoe UI', Tahoma, sans-serif; margin: 0; background: var(--bg); color: var(--text); line-height: 1.6; scroll-behavior: smooth; }
+        /* Changed primary to a professional Deep Green */
+        :root { --primary: #1b5e20; --accent: #2e7d32; --bg: #f1f8e9; --text: #1b5e20; --secondary: #25d366; }
+        
+        body { font-family: 'Segoe UI', Tahoma, sans-serif; margin: 0; background: var(--bg); color: #333; line-height: 1.6; scroll-behavior: smooth; }
         header { background: #fff; padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
         .logo { font-size: 1.5rem; font-weight: bold; color: var(--primary); }
-        .hero { background: linear-gradient(135deg, var(--primary), #00a8ff); color: white; padding: 5rem 5%; text-align: center; }
+        
+        /* Hero Section with Green Gradient */
+        .hero { background: linear-gradient(135deg, var(--primary), var(--accent)); color: white; padding: 6rem 5%; text-align: center; }
         .hero h1 { margin: 0; font-size: 2.8rem; }
+        
+        /* New Quote Section */
+        .quote-box { background: white; margin: -50px auto 20px; padding: 2rem; width: 80%; max-width: 800px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); text-align: center; border-left: 5px solid var(--secondary); }
+        .quote-box p { font-style: italic; font-size: 1.2rem; color: var(--primary); margin: 0; }
+        .quote-box b { display: block; margin-top: 10px; color: #333; text-transform: uppercase; font-size: 0.9rem; }
+
         .services { padding: 4rem 5%; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
-        .card { background: white; padding: 2.5rem; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); text-align: center; transition: 0.3s; display: flex; flex-direction: column; justify-content: space-between; }
-        .card:hover { transform: translateY(-10px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+        .card { background: white; padding: 2.5rem; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); text-align: center; transition: 0.3s; display: flex; flex-direction: column; justify-content: space-between; border-bottom: 3px solid transparent; }
+        .card:hover { transform: translateY(-10px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); border-bottom: 3px solid var(--secondary); }
         .card i { font-size: 3.5rem; color: var(--primary); margin-bottom: 1.5rem; }
-        .btn { display: inline-block; background: var(--primary); color: white; padding: 0.9rem 2rem; border-radius: 30px; text-decoration: none; font-weight: bold; margin-top: auto; }
+        
+        .btn { display: inline-block; background: var(--primary); color: white; padding: 0.9rem 2rem; border-radius: 30px; text-decoration: none; font-weight: bold; margin-top: auto; transition: 0.3s; }
+        .btn:hover { background: var(--secondary); transform: scale(1.05); }
+        
         .whatsapp-float { position: fixed; bottom: 20px; right: 20px; background: var(--secondary); color: white; width: 60px; height: 60px; border-radius: 50%; text-align: center; font-size: 30px; box-shadow: 2px 2px 10px rgba(0,0,0,0.2); z-index: 10000; display: flex; align-items: center; justify-content: center; text-decoration: none; }
-        .footer { background: #1a1a1a; color: #ddd; text-align: center; padding: 3rem; margin-top: 4rem; }
+        .footer { background: #0a2510; color: #f1f8e9; text-align: center; padding: 3rem; margin-top: 4rem; }
     </style>
 </head>
 <body>
     <header>
-        <div class="logo">GanyoKripto</div>
-        <nav>DeFi & Data Solutions</nav>
+        <div class="logo">Ganyo-Digital Service</div>
+        <nav style="color: var(--primary); font-weight: bold;">Knowledge is Money</nav>
     </header>
 
     <section class="hero">
         <h1>Welcome to Ganyo-Digital Service</h1>
-        <p>Your Gateway to High-Speed Data, DeFi Assets, and Blockchain Education.</p>
+        <p>Harness the power of knowledge in DeFi and the Blockchain.</p>
         <a href="#order" class="btn" style="background: white; color: var(--primary);">Explore Services</a>
     </section>
 
+    <!-- Powerful Quote Section -->
+    <div class="quote-box">
+        <p>"In the world of DeFi and Blockchain, knowledge isn't just power—it's profit. Wealth flows to those who acquire the knowledge that others are too afraid to seek."</p>
+        <b>Knowledge is Power. Knowledge is Money.</b>
+    </div>
+
     <div class="services" id="order">
-        <!-- Data Section -->
         <div class="card">
             <i class="fas fa-bolt"></i>
             <h3>Data Bundles</h3>
-            <p>Fast MTN, Telecel, and AirtelTigo data at affordable rates.</p>
+            <p>Fast MTN, Telecel, and AirtelTigo data. Stay connected to your digital wealth.</p>
             <a href="https://docs.google.com/forms/d/e/1FAIpQLSerY-T57z-LzSI2yCQ2Z-NbHC1E6oe5tdWG2DQzeYxyPtRg1A/viewform?usp=header" class="btn">Order Data</a>
         </div>
 
-        <!-- DeFi Portal Section -->
         <div class="card">
             <i class="fas fa-chart-line"></i>
             <h3>Digital DeFi Portal</h3>
-            <p>Access your DeFi tools, NFTs, and strategy dashboard.</p>
+            <p>Manage your assets, NFTs, and strategy on our premium dashboard.</p>
             <a href="https://app.tactics-strategy.com/r/C7lrUMxqZF" target="_blank" class="btn">Enter Portal</a>
         </div>
 
-        <!-- Academy Section -->
         <div class="card">
             <i class="fas fa-graduation-cap"></i>
             <h3>Blockchain Academy</h3>
-            <p>Learn everything about Crypto, NFTs, and Decentralized Finance.</p>
+            <p>Acquire the skills to master Crypto, NFTs, and Decentralized Finance.</p>
             <a href="https://app.v-academy.top/auth/passport/login.php" target="_blank" class="btn">Login Academy</a>
         </div>
 
-        <!-- Networking/Community Section -->
         <div class="card">
             <i class="fas fa-users"></i>
             <h3>WhatsApp Community</h3>
-            <p>Get daily updates and network with other digital entrepreneurs.</p>
+            <p>Network with thousands of entrepreneurs acquiring knowledge daily.</p>
             <a href="https://chat.whatsapp.com/Dmko91cY4OA93VfBfweaVf" target="_blank" class="btn">Join Group</a>
         </div>
     </div>
 
-    <!-- Floating WhatsApp Button (Connects to your WhatsApp Group) -->
     <a href="https://chat.whatsapp.com/Dmko91cY4OA93VfBfweaVf" class="whatsapp-float" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
 
     <div class="footer">
-        <p>&copy; 2026 GanyoKripto. Leading the Digital Future.</p>
+        <p>&copy; 2026 GanyoKripto. Leading the Digital Wealth Future.</p>
         <p>Email: info@ganyokripto.com | WhatsApp: +233 24 236 6444</p>
     </div>
 </body>
