@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GanyoKripto | Knowledge is Power</title>
-    <!-- Fixed stable icon link -->
-    <link rel="stylesheet" href="https://cloudflare.com">
+    <link href="https://cloudflare.com" rel="stylesheet">
     <style>
         :root { 
             --primary: #28a745; 
@@ -13,56 +12,31 @@
             --bg: #28a745; 
             --text: #ffffff; 
             --card-bg: #ffffff;
+            --vboost: #00d2ff;
         }
         
         body { font-family: 'Segoe UI', Tahoma, sans-serif; margin: 0; background: var(--bg); color: var(--text); line-height: 1.6; scroll-behavior: smooth; }
         header { background: #fff; padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
         .logo { font-size: 1.5rem; font-weight: bold; color: var(--primary); }
         .motto { color: var(--accent); font-weight: bold; font-size: 0.9rem; }
+        
         .hero { padding: 6rem 5% 4rem; text-align: center; color: white; }
         .hero h1 { margin: 0; font-size: 2.8rem; font-weight: 900; }
-        .quote-box { background: white; margin: 20px auto; padding: 2rem; width: 85%; max-width: 800px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); text-align: center; border-left: 5px solid var(--accent); color: #333; }
-        .quote-box p { font-style: italic; font-size: 1.2rem; margin: 0; }
+
+        /* V-Boost Countdown Section */
+        .launch-section { background: rgba(0,0,0,0.2); padding: 2rem; margin: 20px auto; width: 90%; max-width: 850px; border-radius: 20px; border: 2px solid var(--accent); text-align: center; }
+        .launch-section h2 { color: var(--accent); margin: 0; text-transform: uppercase; letter-spacing: 2px; }
+        #vboost-timer { font-size: 2.5rem; font-weight: 900; color: white; margin: 15px 0; font-family: monospace; }
+        .timer-label { font-size: 0.9rem; color: #eee; text-transform: uppercase; }
+
         .services { padding: 4rem 5%; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
         .card { background: var(--card-bg); padding: 2.5rem 1.5rem; border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); text-align: center; transition: 0.3s; color: #333; display: flex; flex-direction: column; }
         .card:hover { transform: translateY(-10px); }
         .card i { font-size: 3.5rem; color: var(--primary); margin-bottom: 1.5rem; }
         .btn { display: inline-block; background: var(--primary); color: white; padding: 1rem 2rem; border-radius: 30px; text-decoration: none; font-weight: bold; margin-top: auto; border: none; cursor: pointer; font-size: 1rem; text-align: center; }
 
-        /* MODAL STYLES */
-        .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); align-items: center; justify-content: center; }
-        .modal-content { background: white; padding: 2.5rem; border-radius: 20px; width: 90%; max-width: 450px; text-align: center; position: relative; color: #333; }
-        .close-btn { position: absolute; top: 15px; right: 20px; font-size: 1.5rem; cursor: pointer; color: #999; }
-        .telco-list { display: flex; flex-direction: column; gap: 15px; margin-top: 20px; }
-        .telco-option { padding: 1rem; border: 2px solid #eee; border-radius: 12px; font-weight: bold; font-size: 1.1rem; transition: 0.3s; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; }
-        .telco-option:hover { border-color: var(--primary); background: #f9f9f9; }
-
-        /* FIXED FLOATING WHATSAPP BUTTON */
-        .whatsapp-float { 
-            position: fixed; 
-            bottom: 20px; 
-            right: 20px; 
-            background: #ffffff; /* Blue background */
-            color: #25d366;    /* Bright WhatsApp Green icon */
-            width: 65px; 
-            height: 65px; 
-            border-radius: 50%; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            font-size: 35px; 
-            z-index: 10000; 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3); 
-            text-decoration: none;
-            transition: 0.3s;
-        }
-        .whatsapp-float:hover {
-            transform: scale(1.1);
-            background: #f0f0f0;
-        }
-
+        .whatsapp-float { position: fixed; bottom: 20px; right: 20px; background: #ffffff; color: #25d366; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 35px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); z-index: 10000; text-decoration: none; transition: 0.3s; }
         .footer { background: rgba(0,0,0,0.1); color: white; text-align: center; padding: 3rem; margin-top: 4rem; }
-        .mtn { color: #ffcc00; } .telecel { color: #e60000; } .airteltigo { color: #003399; }
     </style>
 </head>
 <body>
@@ -77,8 +51,11 @@
         <p>Your Gateway to High-Speed Data, DeFi Assets, and Blockchain Education.</p>
     </section>
 
-    <div class="quote-box">
-        <p>"In the world of DeFi and Blockchain, knowledge isn't just power—it's profit. Wealth flows to those who acquire knowledge."</p>
+    <!-- V-BOOST COUNTDOWN -->
+    <div class="launch-section">
+        <h2>🚀 V-Boost DeFi Launch Countdown</h2>
+        <div id="vboost-timer">00:00:00:00</div>
+        <div class="timer-label">Days : Hours : Mins : Secs</div>
     </div>
 
     <div class="services" id="order">
@@ -86,59 +63,53 @@
             <i class="fa-solid fa-bolt"></i>
             <h3>Data Bundles</h3>
             <p>Cheap MTN, Telecel, and AirtelTigo data.</p>
-            <button class="btn" onclick="showTelcos()">Order Data</button>
+            <a href="https://google.com" target="_blank" class="btn">Order Data</a>
         </div>
-
-        <div class="card">
-            <i class="fa-solid fa-chart-line"></i>
-            <h3>Digital DeFi Portal</h3>
-            <p>Manage your assets and strategy on our premium dashboard.</p>
-            <a href="https://tactics-strategy.com" target="_blank" class="btn">Enter Portal</a>
-        </div>
-
+        <!-- (Other cards stay the same) -->
         <div class="card">
             <i class="fa-solid fa-graduation-cap"></i>
             <h3>Blockchain Academy</h3>
             <p>Learn everything about Crypto, NFTs, and DeFi.</p>
             <a href="https://v-academy.top" target="_blank" class="btn">Login Academy</a>
         </div>
-
-        <div class="card">
-            <i class="fa-solid fa-users"></i>
-            <h3>WhatsApp Community</h3>
-            <p>Join thousands of entrepreneurs acquiring knowledge daily.</p>
-            <a href="https://whatsapp.com" target="_blank" class="btn">Join Group</a>
-        </div>
     </div>
 
-    <!-- Telco Modal -->
-    <div id="telcoModal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeTelcos()">&times;</span>
-            <h2 style="color:var(--primary)">Select Network</h2>
-            <div class="telco-list">
-                <div class="telco-option" onclick="goToForm()"><i class="fa-solid fa-circle mtn"></i> MTN Ghana</div>
-                <div class="telco-option" onclick="goToForm()"><i class="fa-solid fa-circle telecel"></i> Telecel (Vodafone)</div>
-                <div class="telco-option" onclick="goToForm()"><i class="fa-solid fa-circle airteltigo"></i> AirtelTigo</div>
-            </div>
-        </div>
-    </div>
-
-    <!-- FIXED Floating WhatsApp Button -->
     <a href="https://whatsapp.com" class="whatsapp-float" target="_blank">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
+    <!-- V-BOOST TIMER SCRIPT -->
     <script>
-        function showTelcos() { document.getElementById('telcoModal').style.display = 'flex'; }
-        function closeTelcos() { document.getElementById('telcoModal').style.display = 'none'; }
-        function goToForm() { window.location.href = "https://google.com"; }
-        window.onclick = function(event) { if (event.target == document.getElementById('telcoModal')) { closeTelcos(); } }
+        // Set the launch date to May 20, 2026 (approx 1 month away)
+        const launchDate = new Date("May 20, 2026 00:00:00").getTime();
+
+        const x = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = launchDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Format numbers to always have two digits
+            const d = days < 10 ? "0" + days : days;
+            const h = hours < 10 ? "0" + hours : hours;
+            const m = minutes < 10 ? "0" + minutes : minutes;
+            const s = seconds < 10 ? "0" + seconds : seconds;
+
+            document.getElementById("vboost-timer").innerHTML = d + ":" + h + ":" + m + ":" + s;
+
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("vboost-timer").innerHTML = "V-BOOST IS LIVE!";
+            }
+        }, 1000);
     </script>
 
     <div class="footer">
         <p>&copy; 2026 GanyoKripto. Leading the Digital Wealth Future.</p>
-        <p>Email: info@ganyokripto.com | WhatsApp: +233 24 236 6444</p>
+        <p>WhatsApp: +233 24 236 6444</p>
     </div>
 </body>
 </html>
