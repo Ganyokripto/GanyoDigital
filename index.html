@@ -9,40 +9,42 @@
         :root { --primary: #22c55e; --bg: #0f172a; --card: #1e293b; --accent: #fbbf24; }
         body { margin: 0; font-family: 'Segoe UI', sans-serif; background: var(--bg); color: white; padding-bottom: 80px; scroll-behavior: smooth; }
         
-        header { background: #fff; color: #0f172a; padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
+        header { background: #fff; color: #0f172a; padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; }
         .logo { color: var(--primary); font-weight: 800; font-size: 1.4rem; }
         
+        .hero { text-align: center; padding: 2rem 5%; background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%); }
+        #timer { font-size: 1.8rem; color: var(--accent); font-weight: bold; font-family: monospace; border: 2px solid var(--accent); padding: 10px 20px; border-radius: 12px; display: inline-block; margin-top: 10px; }
+
         .section { padding: 2rem 5%; }
         .center { text-align: center; }
 
-        /* HERO & TIMER */
-        .hero { text-align: center; padding: 3rem 5%; background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%); }
-        #timer { font-size: 1.8rem; color: var(--accent); font-weight: bold; font-family: monospace; border: 2px solid var(--accent); padding: 10px 20px; border-radius: 12px; display: inline-block; margin-top: 15px; }
-
-        /* ORDER & PAYMENT - BIG & BOLD */
-        .order-container { background: white; color: #0f172a; padding: 2.5rem; border-radius: 24px; max-width: 550px; margin: -40px auto 30px; box-shadow: 0 20px 40px rgba(0,0,0,0.4); border: 5px solid var(--primary); position: relative; }
-        .payment-info { background: #f0fdf4; border: 2px solid var(--primary); padding: 20px; border-radius: 15px; margin-bottom: 25px; text-align: center; }
-        .payment-info span { font-size: 1.5rem; color: var(--primary); font-weight: 900; display: block; margin: 5px 0; }
-        .order-container select, .order-container input { width: 100%; padding: 15px; margin: 10px 0; border: 2px solid #cbd5e1; border-radius: 12px; font-size: 1.1rem; box-sizing: border-box; }
-        .btn-order { background: var(--primary); color: white; padding: 18px; border: none; border-radius: 12px; cursor: pointer; font-weight: 800; width: 100%; font-size: 1.2rem; transition: 0.3s; box-shadow: 0 4px 12px rgba(34, 197, 94, 0.4); }
+        /* PAYMENT & ORDER BOX */
+        .order-container { background: white; color: #0f172a; padding: 2rem; border-radius: 24px; max-width: 550px; margin: -30px auto 30px; box-shadow: 0 20px 40px rgba(0,0,0,0.4); border: 4px solid var(--primary); }
+        .payment-info { background: #f0fdf4; border: 2px solid var(--primary); padding: 15px; border-radius: 15px; margin-bottom: 20px; text-align: center; }
+        .payment-info span { font-size: 1.4rem; color: var(--primary); font-weight: 900; display: block; }
         
-        /* ACADEMY & PORTAL CARDS - IMPROVED DESIGN */
-        .flex-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-        .pro-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 2rem; border-radius: 20px; text-align: center; backdrop-filter: blur(10px); transition: 0.3s; }
-        .pro-card:hover { background: rgba(255,255,255,0.08); border-color: var(--primary); transform: translateY(-5px); }
-        .pro-card i { font-size: 3rem; color: var(--primary); margin-bottom: 1rem; }
-        .btn-link { display: inline-block; padding: 12px 25px; border: 2px solid var(--primary); color: white; text-decoration: none; border-radius: 30px; font-weight: bold; margin-top: 15px; transition: 0.3s; }
-        .btn-link:hover { background: var(--primary); }
+        .network-select { width: 100%; padding: 12px; margin-bottom: 15px; border: 2px solid #cbd5e1; border-radius: 10px; font-size: 1rem; }
+        .phone-input { width: 100%; padding: 12px; margin-bottom: 15px; border: 2px solid #cbd5e1; border-radius: 10px; font-size: 1.1rem; box-sizing: border-box; }
 
-        /* QUIZ ZONE */
-        .quiz-box { background: var(--card); padding: 2.5rem; border-radius: 24px; border: 1px solid #334155; max-width: 650px; margin: 0 auto; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
-        .quiz-opt { display: block; width: 100%; margin: 12px 0; background: #334155; color: white; border: 1px solid #475569; padding: 18px; border-radius: 15px; cursor: pointer; text-align: left; font-size: 1.05rem; transition: 0.2s; }
-        .quiz-opt:hover { background: #475569; border-color: var(--primary); }
+        /* DATA GRID */
+        .data-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
+        .bundle-btn { background: #f8fafc; border: 2px solid #e2e8f0; padding: 15px; border-radius: 12px; cursor: pointer; text-align: center; transition: 0.2s; }
+        .bundle-btn:hover { border-color: var(--primary); background: #f0fdf4; transform: scale(1.02); }
+        .bundle-btn strong { display: block; font-size: 1.2rem; color: #0f172a; }
+        .bundle-btn span { color: var(--primary); font-weight: bold; }
+
+        /* PORTAL & ACADEMY */
+        .pro-card { background: var(--card); border: 1px solid rgba(255,255,255,0.1); padding: 1.5rem; border-radius: 20px; text-align: center; margin-bottom: 15px; transition: 0.3s; }
+        .pro-card i { font-size: 2.5rem; color: var(--primary); margin-bottom: 10px; }
+        .btn-link { display: inline-block; padding: 10px 20px; border: 2px solid var(--primary); color: white; text-decoration: none; border-radius: 25px; font-weight: bold; margin-top: 10px; }
+
+        /* QUIZ */
+        .quiz-box { background: var(--card); padding: 2rem; border-radius: 24px; max-width: 600px; margin: 0 auto; border: 1px solid #334155; }
+        .quiz-opt { display: block; width: 100%; margin: 10px 0; background: #334155; color: white; border: 1px solid #475569; padding: 15px; border-radius: 12px; cursor: pointer; text-align: left; }
         
-        #bottomNav { position: fixed; bottom: 0; width: 100%; background: #fff; display: flex; justify-content: space-around; padding: 15px 0; z-index: 1000; box-shadow: 0 -5px 20px rgba(0,0,0,0.2); }
-        #bottomNav button { background: none; border: none; color: #64748b; font-weight: 700; cursor: pointer; font-size: 0.85rem; }
-        #bottomNav button i { display: block; font-size: 1.4rem; margin-bottom: 5px; }
-        .whatsapp-float { position: fixed; right: 20px; bottom: 90px; background: #25d366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.4); z-index: 999; text-decoration: none; }
+        #bottomNav { position: fixed; bottom: 0; width: 100%; background: #fff; display: flex; justify-content: space-around; padding: 12px 0; z-index: 1000; box-shadow: 0 -5px 15px rgba(0,0,0,0.1); }
+        #bottomNav button { background: none; border: none; color: #64748b; font-weight: bold; cursor: pointer; }
+        #bottomNav button i { display: block; font-size: 1.2rem; margin-bottom: 3px; }
     </style>
 </head>
 <body>
@@ -53,7 +55,7 @@
 </header>
 
 <section class="hero">
-    <h3 style="color: var(--primary); margin-top: 0;">🚀 V-BOOST COUNTDOWN</h3>
+    <h3 style="color: var(--primary); margin: 0;">🚀 V-BOOST COUNTDOWN</h3>
     <div id="timer">--:--:--:--</div>
 </section>
 
@@ -61,90 +63,89 @@
 <div class="section">
     <div class="order-container">
         <div class="payment-info">
-            💰 PAYMENT DETAILS:<br>
-            <span>0242366444</span>
-            <strong>Michael A. Believe</strong><br>
-            (MTN Mobile Money)
+            💰 PAY TO: <span>0242366444</span>
+            <strong>Michael A. Believe</strong>
         </div>
-        <h2 class="center" style="margin-top:0; font-size: 1.8rem; color: var(--primary);">ORDER DATA BUNDLE</h2>
-        <form id="orderForm">
-            <select name="Network" required>
-                <option value="">Select Network</option>
-                <option value="MTN">MTN Ghana</option>
-                <option value="Telecel">Telecel (Vodafone)</option>
-                <option value="AirtelTigo">AirtelTigo</option>
-            </select>
-            <input type="text" name="Phone" placeholder="Number to receive data" required>
-            <input type="text" name="Amount" placeholder="Data Amount (e.g. 5GB or 10GB)" required>
-            <button type="submit" class="btn-order">Submit Order Now</button>
-        </form>
-        <p id="orderStatus" style="text-align:center; font-weight:bold; margin-top:15px;"></p>
+        
+        <h2 class="center" style="margin: 0 0 15px; font-size: 1.5rem; color: var(--primary);">SELECT YOUR BUNDLE</h2>
+        
+        <select id="network" class="network-select">
+            <option value="MTN">MTN Ghana</option>
+            <option value="Telecel">Telecel (Vodafone)</option>
+            <option value="AirtelTigo">AirtelTigo</option>
+        </select>
+        
+        <input type="tel" id="recipient" class="phone-input" placeholder="Enter Recipient Number" maxlength="10">
+
+        <div class="data-grid">
+            <div class="bundle-btn" onclick="sendOrder('1GB', '5.5')"><strong>1GB</strong> <span>¢5.5</span></div>
+            <div class="bundle-btn" onclick="sendOrder('2GB', '10')"><strong>2GB</strong> <span>¢10</span></div>
+            <div class="bundle-btn" onclick="sendOrder('3GB', '15')"><strong>3GB</strong> <span>¢15</span></div>
+            <div class="bundle-btn" onclick="sendOrder('4GB', '20')"><strong>4GB</strong> <span>¢20</span></div>
+            <div class="bundle-btn" onclick="sendOrder('5GB', '25')"><strong>5GB</strong> <span>¢25</span></div>
+            <div class="bundle-btn" onclick="sendOrder('6GB', '30')"><strong>6GB</strong> <span>¢30</span></div>
+            <div class="bundle-btn" onclick="sendOrder('7GB', '35')"><strong>7GB</strong> <span>¢35</span></div>
+            <div class="bundle-btn" onclick="sendOrder('8GB', '40')"><strong>8GB</strong> <span>¢40</span></div>
+            <div class="bundle-btn" onclick="sendOrder('10GB', '45')"><strong>10GB</strong> <span>¢45</span></div>
+        </div>
+        <p class="center" style="font-size: 0.8rem; margin-top: 15px; color: #64748b;">Click a bundle to order via WhatsApp</p>
     </div>
 </div>
 
-<!-- ACADEMY & PORTAL -->
+<!-- PORTAL & ACADEMY -->
 <section class="section" id="portal">
-    <div class="flex-row">
-        <div class="pro-card">
-            <i class="fas fa-chart-line"></i>
-            <h3>Digital DeFi Portal</h3>
-            <p>Access your strategy dashboard and managed NFT portfolio.</p>
-            <a href="https://tactics-strategy.com" target="_blank" class="btn-link">Open Portal</a>
-        </div>
-        <div class="pro-card">
-            <i class="fas fa-graduation-cap"></i>
-            <h3>Ganyo Academy</h3>
-            <p>Master the secrets of Crypto, NFTs, and Digital Wealth.</p>
-            <a href="https://v-academy.top" target="_blank" class="btn-link">Enter Academy</a>
-        </div>
+    <div class="pro-card">
+        <i class="fas fa-chart-line"></i>
+        <h3>Digital DeFi Portal</h3>
+        <p>Manage your strategies and portfolio.</p>
+        <a href="https://tactics-strategy.com" target="_blank" class="btn-link">Enter Portal</a>
+    </div>
+    <div class="pro-card">
+        <i class="fas fa-graduation-cap"></i>
+        <h3>Ganyo Academy</h3>
+        <p>Master Crypto, NFTs, and Blockchain.</p>
+        <a href="https://v-academy.top" target="_blank" class="btn-link">Login Academy</a>
     </div>
 </section>
 
 <!-- QUIZ SECTION -->
 <section class="section" id="quiz">
-    <h2 class="center" style="color: var(--primary); margin-bottom: 2rem;">🧠 BLOCKCHAIN QUIZ MASTER</h2>
+    <h2 class="center" style="color: var(--primary);">🧠 BLOCKCHAIN QUIZ</h2>
     <div class="quiz-box">
-        <p id="qText" style="font-size: 1.25rem; min-height: 70px; font-weight: 600; line-height: 1.4;"></p>
+        <p id="qText" style="font-size: 1.1rem; font-weight: 600; min-height: 50px;"></p>
         <div id="qOptions"></div>
-        <p id="qRes" style="text-align: center; margin-top: 1rem; font-weight: bold;"></p>
-        <button class="btn-order" style="background:#475569; width:auto; margin: 0 auto; display: block;" onclick="nextQ()">Next Question</button>
+        <p id="qRes" style="text-align: center; font-weight: bold; margin-top: 10px;"></p>
+        <button onclick="nextQ()" style="display:block; margin: 10px auto; background: var(--primary); border:none; color:white; padding:10px 20px; border-radius:10px; cursor:pointer;">Next Question</button>
     </div>
 </section>
 
-<a href="https://whatsapp.com" class="whatsapp-float" target="_blank">
-    <i class="fab fa-whatsapp"></i>
-</a>
-
 <div id="bottomNav">
     <button onclick="window.scrollTo(0,0)"><i class="fas fa-home"></i>Home</button>
-    <button onclick="document.getElementById('portal').scrollIntoView()"><i class="fas fa-cubes"></i>Assets</button>
+    <button onclick="document.getElementById('portal').scrollIntoView()"><i class="fas fa-cubes"></i>Portal</button>
     <button onclick="document.getElementById('quiz').scrollIntoView()"><i class="fas fa-brain"></i>Quiz</button>
-    <button onclick="window.open('https://whatsapp.com')"><i class="fab fa-whatsapp"></i>Community</button>
+    <button onclick="window.open('https://whatsapp.com')"><i class="fab fa-whatsapp"></i>Group</button>
 </div>
 
 <script>
-// REPLACE WITH YOUR GOOGLE WEB APP URL TO SEE ORDERS IN EXCEL/SHEETS
-const scriptURL = 'PASTE_YOUR_WEB_APP_URL_HERE'; 
+// WHATSAPP ORDER LOGIC
+function sendOrder(amount, price) {
+    const network = document.getElementById('network').value;
+    const phone = document.getElementById('recipient').value;
+    
+    if(phone.length < 10) {
+        alert("Please enter a valid 10-digit phone number.");
+        return;
+    }
 
-document.getElementById('orderForm').addEventListener('submit', e => {
-    e.preventDefault();
-    const status = document.getElementById('orderStatus');
-    status.innerText = "⏳ Submitting order...";
-    fetch(scriptURL, { method: 'POST', body: new FormData(e.target)})
-        .then(response => {
-            status.innerText = "✅ Order Received! We'll send your data soon.";
-            e.target.reset();
-        })
-        .catch(error => {
-            status.innerText = "❌ Success! (System updated). Check WhatsApp for confirmation.";
-        });
-});
+    const message = `🚀 NEW DATA ORDER%0A----------------------%0A👤 Network: ${network}%0A📱 Number: ${phone}%0A📦 Bundle: ${amount}%0A💰 Price: GHS ${price}%0A----------------------%0AConfirming payment to Michael A. Believe now.`;
+    
+    window.open(`https://wa.me{message}`, '_blank');
+}
 
-// TIMER - MAY 20, 2026
+// TIMER
 const target = new Date("May 20, 2026 00:00:00").getTime();
 setInterval(()=>{
-    const now = new Date().getTime();
-    const diff = target - now;
+    const diff = target - new Date().getTime();
     if(diff < 0) { document.getElementById("timer").innerText = "LIVE!"; return; }
     const d = Math.floor(diff / 86400000);
     const h = Math.floor((diff % 86400000) / 3600000);
@@ -153,28 +154,18 @@ setInterval(()=>{
     document.getElementById("timer").innerText = `${d}d ${h}:${m}:${s}`;
 }, 1000);
 
-// EXPANDED 20-QUESTION QUIZ BANK
+// QUIZ BANK
 const quizzes = [
-    {q: "What is the maximum supply of Bitcoin?", o: ["21 Million", "100 Million", "No limit"], c: 0},
-    {q: "Which coin is known as 'The King of Smart Contracts'?", o: ["Bitcoin", "Ethereum", "Litecoin"], c: 1},
-    {q: "What does 'HODL' stand for in crypto community?", o: ["Hold On for Dear Life", "Highly Organized Digital Ledger", "High Output Digital Loan"], c: 0},
-    {q: "Which wallet type is considered the most secure?", o: ["Exchange Wallet", "Browser Wallet", "Hardware/Cold Wallet"], c: 2},
-    {q: "What is an NFT?", o: ["Non-Fungible Token", "New Finance Trade", "Network Functional Tool"], c: 0},
-    {q: "What is 'Gas' used for on the Ethereum network?", o: ["Staking rewards", "Transaction fees", "Printing coins"], c: 1},
-    {q: "Who is the creator of Bitcoin?", o: ["Vitalik Buterin", "Satoshi Nakamoto", "Changpeng Zhao"], c: 1},
-    {q: "What is a 'Private Key'?", o: ["Your username", "Your password for access", "The wallet address"], c: 1},
-    {q: "What is 'Staking'?", o: ["Selling your coins", "Locking coins to secure the network", "Mining new blocks"], c: 1},
-    {q: "What is a 'Stablecoin'?", o: ["A coin with a fixed supply", "A coin pegged to a stable asset (USD)", "A coin that never crashes"], c: 1},
-    {q: "What is a 'Bull Market'?", o: ["Prices are falling", "Prices are rising", "Market is closed"], c: 1},
-    {q: "What is 'FOMO'?", o: ["Fear Of Missing Out", "Future Of Market Options", "Fast Online Money Order"], c: 0},
-    {q: "What is the smallest unit of Bitcoin called?", o: ["Wei", "Satoshi", "Bit"], c: 1},
-    {q: "What is a 'DEX'?", o: ["Digital Exchange", "Decentralized Exchange", "Daily Entry X-change"], c: 1},
-    {q: "What is 'DeFi'?", o: ["Deep Finance", "Decentralized Finance", "Digital Fiat"], c: 1},
-    {q: "Which network is the 'Binance Smart Chain' now part of?", o: ["Solana", "BNB Chain", "Polkadot"], c: 1},
-    {q: "What is a 'Whitepaper'?", o: ["A marketing flyer", "The technical guide of a project", "A tax document"], c: 1},
-    {q: "What is 'Mining' in Crypto?", o: ["Buying coins low", "Using power to secure network/earn coins", "Searching for passwords"], c: 1},
-    {q: "What is 'Burn' in crypto?", o: ["Hack a wallet", "Permanently remove coins from supply", "Selling all assets"], c: 1},
-    {q: "What is a 'Whale'?", o: ["A beginner", "A holder of massive amounts of crypto", "A type of crypto scam"], c: 1}
+    {q: "What is the max supply of Bitcoin?", o: ["21 Million", "100 Million", "Unlimited"], c: 0},
+    {q: "Which network uses Gas Fees?", o: ["Bitcoin", "Ethereum", "Solana"], c: 1},
+    {q: "What is a 'Cold Wallet'?", o: ["Online", "Offline/Hardware", "Mobile App"], c: 1},
+    {q: "Smallest unit of Bitcoin?", o: ["Satoshi", "Bit", "Wei"], c: 0},
+    {q: "What does NFT stand for?", o: ["Non-Fungible Token", "New Finance Tech", "Net Fast Trade"], c: 0},
+    {q: "Who created Bitcoin?", o: ["Satoshi Nakamoto", "Vitalik Buterin", "Elon Musk"], c: 0},
+    {q: "What is 'HODL'?", o: ["Holding long term", "High Order Trade", "Selling fast"], c: 0},
+    {q: "What is 'Staking'?", o: ["Locking coins for rewards", "Selling coins", "Mining gold"], c: 0},
+    {q: "What is a Stablecoin?", o: ["Pegged to USD", "Very volatile", "Type of NFT"], c: 0},
+    {q: "What is FOMO?", o: ["Fear of Missing Out", "Future of Money Online", "Fast Online Mining"], c: 0}
 ];
 
 let curQ = 0;
@@ -189,18 +180,15 @@ function nextQ(){
 function checkQ(i){
     const res = document.getElementById("qRes");
     if(i === quizzes[curQ].c){
-        res.innerText = "✅ EXCELLENT! CORRECT.";
+        res.innerText = "✅ Correct!";
         res.style.color = "var(--primary)";
     } else {
-        res.innerText = "❌ WRONG! Keep studying in the Academy.";
+        res.innerText = "❌ Wrong! Try again.";
         res.style.color = "red";
     }
 }
 nextQ();
 </script>
 
-<div class="footer center section" style="background: rgba(0,0,0,0.1); margin-top:20px;">
-    <p>© 2026 Ganyo Digital. Knowledge is Money.</p>
-</div>
 </body>
 </html>
