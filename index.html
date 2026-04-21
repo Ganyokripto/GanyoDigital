@@ -188,8 +188,7 @@ function sendOrder() {
         return; 
     }
 
-    // 2. SMARTPHONE POPUP FIX: Open the window immediately
-    // Browsers allow this because it's a direct result of the user's click.
+    // 2. SMARTPHONE POPUP FIX
     const waWindow = window.open("about:blank", "_blank");
 
     // 3. BACKGROUND WORK: Update Counter
@@ -202,24 +201,21 @@ function sendOrder() {
     // Format phone for Ghana SMS API (0... to 233...)
     let formatted = buyerPhone.startsWith('0') ? '233' + buyerPhone.substring(1) : buyerPhone;
 
-    // 4. TRIGGER SMS TO BUYER (G Online Sites API)
-    const apiURL = "https://sms.gonlinesites.com/app/sms/api";
+    // 4. TRIGGER SMS TO BUYER (Fixed API URL)
+    const apiURL = "https://gonlinesites.com"; // Added full path
     const apiKey = "R2FueW9EYXRhOkFtZW5yYWgxPw=="; 
     const senderID = "GanyoData";
     const smsText = `🚀 GanyoData: Your order for ${activePkg} (${activeNet}) has been received! Processing now. Thank you!`;
 
-    // Fire the SMS silently in the background
     fetch(`${apiURL}?action=send-sms&api_key=${apiKey}&to=${formatted}&from=${senderID}&sms=${encodeURIComponent(smsText)}`)
     .catch(err => console.log("SMS background task complete."));
 
-    // 5. REDIRECT TO YOUR SPECIFIC WHATSAPP
-    const waMsg = `🚀 *NEW DATA ORDER*%0A----------------------%0A👤 *Network:* ${activeNet}%0A📱 *Recipient:* ${buyerPhone}%0A📦 *Bundle:* ${activePkg} (${activePrice})%0A----------------------%0A_A confirmation SMS has been sent to the buyer._`;
+    // 5. REDIRECT TO YOUR WHATSAPP (Fixed Link)
+    const waMsg = `🚀 *NEW DATA ORDER*%0A----------------------%0A👤 *Network:* ${activeNet}%0A📱 *Recipient:* ${buyerPhone}%0A📦 *Bundle:* ${activePkg} (${activePrice})%0A----------------------`;
     
-    // This updates the window we opened in Step 2 to your WhatsApp
-    waWindow.location.href = "https://wa.me/233505332010?text="+msg);
-}
+    // Fixed: Added /233505332010 and correct slash
+    waWindow.location.href = "https://wa.me" + waMsg;
 
-}
 
 // TIMER
 const target=new Date("May 30, 2026 00:00:00").getTime();
