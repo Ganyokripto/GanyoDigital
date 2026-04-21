@@ -8,179 +8,153 @@
     <style>
         :root { --primary: #22c55e; --bg: #0f172a; --card: #1e293b; --accent: #fbbf24; }
         body { margin: 0; font-family: 'Segoe UI', sans-serif; background: var(--bg); color: white; padding-bottom: 80px; scroll-behavior: smooth; }
-        
         header { background: #fff; color: #0f172a; padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
         .logo { color: var(--primary); font-weight: 800; font-size: 1.4rem; }
-        
         .section { padding: 2rem 5%; }
-        .hero { background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%); text-align: center; border-bottom: 3px solid var(--primary); }
+        .center { text-align: center; }
         
-        /* FEATURED ORDER BOX */
-        .order-box { background: white; color: #0f172a; padding: 2rem; border-radius: 20px; max-width: 500px; margin: -50px auto 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.5); border: 4px solid var(--primary); position: relative; z-index: 10; }
-        .order-box h2 { margin: 0 0 10px; color: var(--primary); font-size: 1.8rem; }
-        .order-box select, .order-box input { width: 100%; padding: 12px; margin: 8px 0; border: 2px solid #e2e8f0; border-radius: 10px; font-size: 1rem; box-sizing: border-box; }
+        /* ORDER & PAYMENT BOX */
+        .order-container { background: white; color: #0f172a; padding: 2rem; border-radius: 20px; max-width: 500px; margin: 20px auto; box-shadow: 0 10px 25px rgba(0,0,0,0.5); border: 4px solid var(--primary); }
+        .payment-info { background: #f0fdf4; border: 1px dashed var(--primary); padding: 15px; border-radius: 10px; margin-bottom: 20px; font-weight: bold; text-align: center; }
+        .order-container input, .order-container select { width: 100%; padding: 12px; margin: 8px 0; border: 2px solid #e2e8f0; border-radius: 10px; font-size: 1rem; box-sizing: border-box; }
+        .btn { background: var(--primary); color: white; padding: 14px 25px; border: none; border-radius: 10px; cursor: pointer; font-weight: bold; width: 100%; font-size: 1.1rem; transition: 0.3s; margin-top: 10px; }
+        .btn-outline { background: transparent; border: 2px solid var(--primary); color: var(--primary); }
         
-        .btn { background: var(--primary); color: white; padding: 14px 25px; border: none; border-radius: 10px; cursor: pointer; font-weight: bold; width: 100%; font-size: 1.1rem; transition: 0.3s; }
-        .btn:hover { filter: brightness(1.1); transform: translateY(-2px); }
-
-        /* GAME ZONE */
-        .game-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-        .game-card { background: var(--card); padding: 1.5rem; border-radius: 15px; border: 1px solid #334155; text-align: center; }
-        .word-display { font-size: 2rem; letter-spacing: 4px; color: var(--accent); font-weight: 800; margin: 15px 0; }
-        .hint-text { font-style: italic; color: #94a3b8; font-size: 0.9rem; margin-bottom: 10px; display: block; }
-        
-        #flashcard { background: var(--primary); min-height: 120px; display: flex; align-items: center; justify-content: center; border-radius: 12px; cursor: pointer; font-weight: bold; padding: 15px; font-size: 1.1rem; margin: 15px 0; }
-        
-        .quiz-opt { display: block; width: 100%; margin: 8px 0; background: #334155; color: white; border: 1px solid #475569; padding: 10px; border-radius: 8px; cursor: pointer; text-align: left; }
+        /* QUIZ ZONE */
+        .quiz-card { background: var(--card); padding: 2rem; border-radius: 20px; border: 1px solid #334155; text-align: center; max-width: 600px; margin: 0 auto; }
+        .quiz-opt { display: block; width: 100%; margin: 10px 0; background: #334155; color: white; border: 1px solid #475569; padding: 15px; border-radius: 12px; cursor: pointer; text-align: left; font-size: 1rem; }
         .quiz-opt:hover { background: #475569; }
+        #qRes { margin-top: 15px; font-weight: bold; font-size: 1.2rem; }
 
-        #timer { font-size: 1.5rem; color: var(--accent); font-weight: bold; font-family: monospace; }
-        #bottomNav { position: fixed; bottom: 0; width: 100%; background: #fff; display: flex; justify-content: space-around; padding: 10px 0; box-shadow: 0 -5px 15px rgba(0,0,0,0.1); z-index: 1000; }
-        #bottomNav button { background: none; border: none; color: #64748b; font-weight: bold; cursor: pointer; font-size: 0.9rem; }
-        #bottomNav button i { display: block; font-size: 1.2rem; margin-bottom: 3px; }
+        #timer { font-size: 1.8rem; color: var(--accent); font-weight: bold; font-family: monospace; border: 2px solid var(--accent); padding: 10px; border-radius: 10px; display: inline-block; }
+        #bottomNav { position: fixed; bottom: 0; width: 100%; background: #fff; display: flex; justify-content: space-around; padding: 12px 0; z-index: 1000; box-shadow: 0 -5px 15px rgba(0,0,0,0.1); }
+        #bottomNav button { background: none; border: none; color: #64748b; font-weight: bold; cursor: pointer; font-size: 0.8rem; }
+        #bottomNav button i { display: block; font-size: 1.3rem; margin-bottom: 4px; }
     </style>
 </head>
 <body>
 
 <header>
     <div class="logo">GANYO DIGITAL</div>
-    <div id="timer">00:00:00</div>
+    <div>Knowledge is Money</div>
 </header>
 
-<section class="section hero">
-    <h1>Knowledge is Money</h1>
-    <p>Premium Data Bundles & Crypto Education</p>
+<section class="section center">
+    <h3 style="color: var(--primary);">🚀 V-BOOST COUNTDOWN</h3>
+    <div id="timer">--:--:--:--</div>
 </section>
 
-<!-- MAIN ORDER FORM -->
-<div class="order-box">
-    <h2>⚡ ORDER DATA</h2>
-    <form id="orderForm">
-        <select name="Network" required id="networkSelect">
-            <option value="">Select Network</option>
-            <option value="MTN">MTN Ghana</option>
-            <option value="Telecel">Telecel (Vodafone)</option>
-            <option value="AirtelTigo">AirtelTigo</option>
-        </select>
-        <input type="text" name="Phone" placeholder="Phone Number" required>
-        <input type="text" name="Amount" placeholder="Data Amount (e.g. 10GB)" required>
-        <button type="submit" class="btn">Submit Order Now</button>
-    </form>
-    <p id="orderStatus" style="text-align:center; font-weight:bold; margin-top:10px;"></p>
+<!-- PAYMENT & ORDER SECTION -->
+<div class="section">
+    <div class="order-container">
+        <div class="payment-info">
+            💰 PAYMENT NUMBER: <br>
+            <span style="font-size: 1.4rem; color: var(--primary);">054XXXXXXX</span> <br>
+            (MTN - GANYO DIGITAL)
+        </div>
+        <h2 class="center" style="margin-top:0;">⚡ ORDER DATA</h2>
+        <form id="orderForm">
+            <select name="Network" required>
+                <option value="">Select Network</option>
+                <option value="MTN">MTN Ghana</option>
+                <option value="Telecel">Telecel (Vodafone)</option>
+                <option value="AirtelTigo">AirtelTigo</option>
+            </select>
+            <input type="text" name="Phone" placeholder="Your Phone Number" required>
+            <input type="text" name="Amount" placeholder="Data Amount (e.g. 5GB)" required>
+            <input type="text" name="Reference" placeholder="Payment Reference/ID" required>
+            <button type="submit" class="btn">Place Order Now</button>
+        </form>
+        <p id="orderStatus" style="text-align:center; font-weight:bold; margin-top:10px;"></p>
+    </div>
 </div>
 
-<section class="section" id="games">
-    <h2 style="text-align:center; color: var(--primary);">🧠 THE LEARNING ZONE</h2>
-    <div class="game-grid">
-        
-        <!-- SCRAMBLE -->
-        <div class="game-card">
-            <h3>Scramble</h3>
-            <span class="hint-text" id="sHint">Hint: ---</span>
-            <div class="word-display" id="sWord">----</div>
-            <input type="text" id="sInput" placeholder="Answer..." style="width:70%; padding:10px; border-radius:5px;">
-            <button class="btn" style="width:auto; margin-top:10px;" onclick="checkS()">Verify</button>
+<!-- SERVICES SECTION -->
+<section class="section" id="services">
+    <h2 class="center">Digital Assets & Academy</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
+        <div class="quiz-card" style="padding: 1.5rem;">
+            <h3>📊 DeFi Portal</h3>
+            <a href="https://tactics-strategy.com" target="_blank"><button class="btn btn-outline">Enter Portal</button></a>
         </div>
-
-        <!-- FLASHCARDS -->
-        <div class="game-card">
-            <h3>Flashcards</h3>
-            <p>Tap to reveal meaning</p>
-            <div id="flashcard" onclick="flipC()">HODL</div>
-            <button class="btn" style="background:#475569;" onclick="nextC()">Next Card</button>
+        <div class="quiz-card" style="padding: 1.5rem;">
+            <h3>🎓 Academy</h3>
+            <a href="https://v-academy.top" target="_blank"><button class="btn btn-outline">Login Academy</button></a>
         </div>
+    </div>
+</section>
 
-        <!-- QUIZ -->
-        <div class="game-card">
-            <h3>Quiz Mastery</h3>
-            <p id="qText" style="font-weight:bold; min-height:50px;"></p>
-            <div id="qOptions"></div>
-            <p id="qRes" style="margin-top:10px; font-weight:bold;"></p>
-        </div>
-
+<!-- QUIZ SECTION -->
+<section class="section" id="quiz">
+    <h2 class="center" style="color: var(--primary);">🧠 BLOCKCHAIN QUIZ MASTER</h2>
+    <div class="quiz-card">
+        <p id="qText" style="font-size: 1.2rem; min-height: 60px; font-weight: 600;"></p>
+        <div id="qOptions"></div>
+        <p id="qRes"></p>
+        <button class="btn" style="background:#475569; width:auto;" onclick="nextQ()">Next Question</button>
     </div>
 </section>
 
 <div id="bottomNav">
     <button onclick="window.scrollTo(0,0)"><i class="fas fa-home"></i>Home</button>
-    <button onclick="document.getElementById('games').scrollIntoView()"><i class="fas fa-gamepad"></i>Games</button>
-    <button onclick="window.open('https://v-academy.top')"><i class="fas fa-graduation-cap"></i>Academy</button>
+    <button onclick="document.getElementById('services').scrollIntoView()"><i class="fas fa-cubes"></i>Portal</button>
+    <button onclick="document.getElementById('quiz').scrollIntoView()"><i class="fas fa-lightbulb"></i>Quiz</button>
     <button onclick="window.open('https://whatsapp.com')"><i class="fab fa-whatsapp"></i>Join</button>
 </div>
 
 <script>
-// --- GOOGLE SHEETS INTEGRATION ---
-const scriptUrl = 'PASTE_YOUR_APPS_SCRIPT_URL_HERE'; 
+// --- GOOGLE SHEETS SCRIPT URL ---
+const scriptURL = 'PASTE_YOUR_APPS_SCRIPT_WEB_APP_URL_HERE'; 
+
 document.getElementById('orderForm').addEventListener('submit', e => {
     e.preventDefault();
     const status = document.getElementById('orderStatus');
-    status.innerText = "Processing...";
-    fetch(scriptUrl, { method: 'POST', body: new FormData(e.target)})
+    status.innerText = "⏳ Processing...";
+    fetch(scriptURL, { method: 'POST', body: new FormData(e.target)})
         .then(response => {
-            status.innerText = "Order Sent Successfully! ✅";
+            status.innerText = "✅ Order Placed! We will process it shortly.";
             e.target.reset();
         })
         .catch(error => {
-            status.innerText = "Error sending order. Please try again.";
+            status.innerText = "❌ Connection Error. Use WhatsApp to order.";
         });
 });
 
-// --- SCRAMBLE GAME ---
-const scrambles = [
-    {w: "SATOSHI", h: "The creator of Bitcoin"},
-    {w: "BLOCKCHAIN", h: "A digital ledger of transactions"},
-    {w: "METAMASK", h: "Popular browser-based crypto wallet"},
-    {w: "STAKING", h: "Locking assets to earn network rewards"},
-    {w: "AIRDROP", h: "Free tokens sent to your wallet"},
-    {w: "GASFEE", h: "Transaction cost on the network"},
-    {w: "SOLIDITY", h: "Language for Smart Contracts"},
-    {w: "LIQUIDITY", h: "Pool of funds used for decentralized trading"}
-];
-let curS;
-function initS(){
-    curS = scrambles[Math.floor(Math.random()*scrambles.length)];
-    document.getElementById("sWord").innerText = curS.w.split('').sort(()=>0.5-Math.random()).join('');
-    document.getElementById("sHint").innerText = "Hint: " + curS.h;
-    document.getElementById("sInput").value = "";
-}
-function checkS(){
-    if(document.getElementById("sInput").value.toUpperCase() === curS.w){
-        alert("Correct!"); initS();
-    } else alert("Try again!");
-}
+// --- TIMER ---
+const target = new Date("May 20, 2026 00:00:00").getTime();
+setInterval(()=>{
+    const now = new Date().getTime();
+    const diff = target - now;
+    if(diff < 0) { document.getElementById("timer").innerText = "LIVE!"; return; }
+    const d = Math.floor(diff / 86400000);
+    const h = Math.floor((diff % 86400000) / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
+    document.getElementById("timer").innerText = `${d}d ${h}:${m}:${s}`;
+}, 1000);
 
-// --- FLASHCARDS ---
-const cards = [
-    {t: "HODL", m: "Hold On for Dear Life (Don't sell during dips)"},
-    {t: "FOMO", m: "Fear Of Missing Out"},
-    {t: "DAO", m: "Decentralized Autonomous Organization"},
-    {t: "DEX", m: "Decentralized Exchange (No middleman)"},
-    {t: "FUD", m: "Fear, Uncertainty, and Doubt"},
-    {t: "WHALE", m: "Investors with massive amounts of crypto"}
-];
-let curC = 0, flipped = false;
-function flipC(){
-    const f = document.getElementById("flashcard");
-    f.innerText = flipped ? cards[curC].t : cards[curC].m;
-    f.style.background = flipped ? "var(--primary)" : "var(--accent)";
-    flipped = !flipped;
-}
-function nextC(){
-    curC = (curC + 1) % cards.length; flipped = false;
-    document.getElementById("flashcard").innerText = cards[curC].t;
-    document.getElementById("flashcard").style.background = "var(--primary)";
-}
-
-// --- QUIZ ---
+// --- EXPANDED QUIZ BANK ---
 const quizzes = [
-    {q: "What is the max supply of Bitcoin?", o: ["21 Million", "100 Million", "Unlimited"], c: 0},
-    {q: "Which network uses 'Gas'?", o: ["Bitcoin", "Ethereum", "Visa"], c: 1},
-    {q: "What does NFT stand for?", o: ["Next Fast Trade", "Non-Fungible Token", "New Finance Tech"], c: 1},
-    {q: "Which wallet is 'Cold'?", o: ["Hardware Wallet", "Exchange Wallet", "Browser Extension"], c: 0},
-    {q: "Smallest unit of Bitcoin?", o: ["Bit", "Satoshi", "Wei"], c: 1}
+    {q: "What is the maximum supply of Bitcoin?", o: ["21 Million", "100 Million", "Unlimited"], c: 0},
+    {q: "Which network introduced Smart Contracts?", o: ["Bitcoin", "Ethereum", "Dogecoin"], c: 1},
+    {q: "What does DeFi stand for?", o: ["Deep Finance", "Decentralized Finance", "Digital Fiat"], c: 1},
+    {q: "What is a 'Cold Wallet'?", o: ["Online wallet", "Offline storage", "Frozen account"], c: 1},
+    {q: "Smallest unit of a Bitcoin?", o: ["Bit", "Wei", "Satoshi"], c: 2},
+    {q: "What is 'Gas' in Ethereum?", o: ["Fuel for cars", "Transaction fee", "A type of coin"], c: 1},
+    {q: "What is a 'Fork' in blockchain?", o: ["A dinner tool", "A network update/split", "A type of hack"], c: 1},
+    {q: "What is the role of a 'Miner'?", o: ["Searching for gold", "Validating transactions", "Printing cash"], c: 1},
+    {q: "What is 'HODL'?", o: ["A crypto wallet", "Holding assets long-term", "A fast trade"], c: 1},
+    {q: "What is an NFT?", o: ["Non-Fungible Token", "New Financial Tool", "Network File Transfer"], c: 0},
+    {q: "Who is Satoshi Nakamoto?", o: ["A Japanese Bank", "Bitcoin's creator", "CEO of Binance"], c: 1},
+    {q: "What is 'Staking'?", o: ["Selling coins", "Locking coins for rewards", "Deleting coins"], c: 1},
+    {q: "What is 'FOMO'?", o: ["Fast Online Money", "Fear Of Missing Out", "Future Of Mining Only"], c: 1},
+    {q: "What is a 'Stablecoin'?", o: ["Fixed price coin", "High risk coin", "Fast coin"], c: 0},
+    {q: "What is a 'Private Key'?", o: ["Your username", "Secret access password", "A type of NFT"], c: 1}
 ];
+
 let curQ = 0;
-function initQ(){
+function nextQ(){
+    curQ = Math.floor(Math.random() * quizzes.length);
     const q = quizzes[curQ];
     document.getElementById("qText").innerText = q.q;
     document.getElementById("qOptions").innerHTML = q.o.map((opt, i) => 
@@ -190,25 +164,18 @@ function initQ(){
 function checkQ(i){
     const res = document.getElementById("qRes");
     if(i === quizzes[curQ].c){
-        res.innerText = "Correct! ✅"; res.style.color = "var(--primary)";
-        setTimeout(()=>{ curQ = (curQ+1)%quizzes.length; initQ(); }, 1500);
+        res.innerText = "✅ Correct! Smart move.";
+        res.style.color = "var(--primary)";
     } else {
-        res.innerText = "Wrong ❌"; res.style.color = "red";
+        res.innerText = "❌ Wrong! Learn more in Academy.";
+        res.style.color = "red";
     }
 }
-
-// --- TIMER ---
-setInterval(()=>{
-    const diff = new Date("May 20, 2026") - new Date();
-    if(diff < 0) { document.getElementById("timer").innerText = "LIVE!"; return; }
-    const h = Math.floor(diff/3600000);
-    const m = Math.floor((diff%3600000)/60000);
-    const s = Math.floor((diff%60000)/1000);
-    document.getElementById("timer").innerText = `${h}:${m}:${s}`;
-},1000);
-
-initS(); initQ();
+nextQ();
 </script>
 
+<div class="footer center section" style="background: rgba(0,0,0,0.1); margin-top:20px;">
+    <p>© 2026 Ganyo Digital. Knowledge is Money.</p>
+</div>
 </body>
 </html>
