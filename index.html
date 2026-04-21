@@ -1,3 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GanyoKripto | Fast Data & Services</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+:root { 
+--primary:#28a745; 
+--accent:#ffc107; 
+--bg:#28a745; 
+--text:#ffffff; 
+--card-bg:#ffffff;
+}
+
+body { font-family:'Segoe UI',sans-serif; margin:0; background:var(--bg); color:var(--text); }
+header { background:#fff; padding:1rem 5%; display:flex; justify-content:space-between; align-items:center; }
+.logo { color:var(--primary); font-weight:bold; font-size:1.4rem; }
+.motto { color:var(--accent); font-weight:bold; font-size:0.9rem; }
+
+/* ORDER SECTION */
+.order-section { background:#fff; padding:1.5rem; border-radius:20px; margin:15px 5%; color:#333; text-align:center; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+.network-grid { display:flex; gap:8px; justify-content:center; }
+.net-btn { padding:8px 15px; border:2px solid #eee; border-radius:8px; cursor:pointer; font-weight:bold; }
+.net-btn.active { background:#e8f5e9; border-color:var(--primary); color:var(--primary); }
+
+.package-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin:15px 0; }
+.pkg-btn { padding:10px; border:1px solid #ddd; border-radius:8px; cursor:pointer; font-size:0.8rem; background:#f9f9f9; }
+.pkg-btn.active { background:var(--primary); color:white; border-color:var(--primary); }
+
+.input-phone { padding:12px; width:100%; max-width:280px; border-radius:10px; border:1px solid #ccc; margin-bottom:10px; outline:none; text-align:center; }
+.order-btn { background:#25d366; color:white; padding:12px; border-radius:50px; border:none; cursor:pointer; width:100%; max-width:250px; font-weight:bold; font-size:1rem; }
+
+.order-count { font-size: 0.85rem; color: #28a745; margin-top: 10px; font-weight: bold; background: #f0fdf4; padding: 5px 12px; border-radius: 15px; display: inline-block; }
+
+/* SERVICES BUTTONS */
+.services { padding:1rem 5%; display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:1rem; }
+.card { background:white; padding:1.5rem; border-radius:15px; text-align:center; color:#333; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+.card h3 { margin-top:0; color:var(--primary); }
+.serv-btn { display:block; background:var(--primary); color:white; text-decoration:none; padding:10px; border-radius:8px; font-weight:bold; transition: 0.3s; margin-top:10px; }
+
+/* TIMER */
+.vboost-box { margin:15px 5%; padding:1rem; border:2px solid var(--accent); text-align:center; border-radius:15px; background: rgba(0,0,0,0.1); }
+#timer { font-size:1.8rem; font-weight:bold; font-family: monospace; }
+
+/* QUIZ */
+.quiz-container { background:#fff; padding:1.5rem; margin:15px 5%; border-radius:15px; color:#333; text-align:center; }
+.option-btn { display:block; width:100%; padding:12px; margin:8px 0; border-radius:8px; border:1px solid #ddd; cursor:pointer; background:#fff; transition:0.2s; font-weight:500; }
+.option-btn:hover { background:#f0f0f0; }
+.score-box { font-weight:bold; margin:15px 0; font-size:1.1rem; color:var(--primary); }
+.next-btn { background:#6c757d; color:white; border:none; padding:10px 20px; border-radius:8px; cursor:pointer; }
+
+.footer { text-align:center; padding:25px; font-size:0.9rem; }
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="logo">GanyoDigital</div>
+<div class="motto">Knowledge is Money</div>
+</header>
+
+<!-- PAYMENT INSTRUCTIONS SECTION -->
+<section style="background: #fff; padding: 1.5rem; border-radius: 20px; margin: 15px 5%; color: #333; border: 2px solid var(--accent); text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+    <h2 style="color: var(--primary); margin-top: 0; font-size: 1.3rem;">💳 Payment Instructions</h2>
+    <p style="margin-bottom: 10px; font-size: 0.9rem;">Make payment to the number below before placing your order:</p>
+    
+    <div style="background: #f8f9fa; padding: 15px; border-radius: 12px; border: 1px dashed #ccc;">
+        <span style="display: block; font-size: 0.8rem; color: #666; text-transform: uppercase; font-weight: bold;">Mobile Money Number</span>
+        <strong style="font-size: 1.5rem; color: #000; letter-spacing: 1px;" id="momoNumber">0242366444</strong>
+        <span style="display: block; font-size: 0.9rem; color: var(--primary); font-weight: bold; margin-top: 5px;">Name: Michael .A. Believe</span>
+    </div>
+    
+    <p style="margin-top: 10px; font-size: 0.85rem; color: #d9534f; font-weight: bold;">⚠️ Please use 1 as the Reference!</p>
+</section>
+    
+<section class="order-section">
+<h2>Buy Cheap Data</h2>
+<div class="network-grid">
+<div class="net-btn active" onclick="setNet('MTN',this)">MTN</div>
+<div class="net-btn" onclick="setNet('Telecel',this)">Telecel</div>
+<div class="net-btn" onclick="setNet('AirtelTigo',this)">AirtelTigo</div>
+</div>
+
+<div class="package-grid" id="pkgGrid"></div>
+
+<input type="number" id="orderPhone" class="input-phone" placeholder="Recipient Number">
+<button class="order-btn" onclick="sendOrder()">Place Order Now</button>
+<br>
+<div class="order-count"><i class="fa fa-check-circle"></i> <span id="totalOrders">0</span> Orders Processed</div>
+</section>
+
+<div class="services">
+<div class="card">
+<i class="fa fa-chart-line" style="font-size:2rem; color:var(--primary)"></i>
+<h3>DeFi Portal</h3>
+<a href="https://app.tactics-strategy.com/r/C7lrUMxqZF" target="_blank" class="serv-btn">Enter Portal</a>
+</div>
+
+<div class="card">
+<i class="fa fa-graduation-cap" style="font-size:2rem; color:var(--primary)"></i>
+<h3>Academy</h3>
+<a href="https://v-academy.top" target="_blank" class="serv-btn">Login Academy</a>
+</div>
+
+<div class="card">
+<i class="fa fa-users" style="font-size:2rem; color:var(--primary)"></i>
+<h3>Community</h3>
+<a href="https://chat.whatsapp.com/Dmko91cY4OA93VfBfweaVf" target="_blank" class="serv-btn">Join WhatsApp</a>
+</div>
+</div>
+
+<div class="vboost-box">
+<h3>🚀 V-BOOST LAUNCH COUNTDOWN</h3>
+<div id="timer">00:00:00:00</div>
+</div>
+
+<!-- DAILY W-BOOST INSIGHT (UPDATED) -->
+<section style="background: #fff; padding: 2rem 1.5rem; border-radius: 20px; margin: 20px 5%; color: #333; box-shadow: 0 10px 30px rgba(0,0,0,0.2); text-align: center; border-left: 5px solid var(--accent);">
+    <h3 style="color: var(--primary); margin-top: 0; font-size: 1.3rem;">🌟 Daily Crypto Insight</h3>
+    
+    <div id="daily-quote" style="font-size: 1.1rem; font-weight: 600; color: #444; font-style: italic; margin: 15px 0; line-height: 1.4;">
+        "Loading today's wisdom..."
+    </div>
+    
+    <div style="background: #f8f9fa; padding: 15px; border-radius: 12px; margin-top: 10px;">
+        <h4 style="color: var(--primary); margin: 0 0 5px 0; font-size: 1rem; text-transform: uppercase;">Why V-BOOST?</h4>
+        <p id="vboost-reason" style="font-size: 0.95rem; color: #555; margin: 0; line-height: 1.5;">
+            Calculating the future of wealth...
+        </p>
+    </div>
+</section>
+
+    
+<section class="quiz-container">
+<h3>🧠 Crypto & DeFi IQ Quiz</h3>
+<p id="qText" style="font-weight:bold; font-size:1.1rem;"></p>
+<div id="qOptions"></div>
+<p id="qRes" style="font-weight:bold; height:20px;"></p>
+<div class="score-box">Your Score: <span id="score">0</span></div>
+<button class="next-btn" onclick="nextQ()">Next Question</button>
+</section>
+
+<div class="footer">
+GanyoDigital 2026 | powered By: GanyoKripto
+</div>
+
 <script>
 let activeNet='MTN', activePkg='', activePrice='';
 const packages=[
@@ -25,65 +175,23 @@ document.querySelectorAll('.pkg-btn').forEach(b=>b.classList.remove('active'));
 el.classList.add('active');
 }
 
-/* ORDER COUNTER */
-let orderCount = parseInt(localStorage.getItem('GanyoData')) || 0; 
+// ORDER COUNTER LOGIC - ONLY INCREASES ON CLICK
+let orderCount = parseInt(localStorage.getItem('ganyoOrders')) || 0; 
 document.getElementById('totalOrders').innerText = orderCount.toLocaleString();
 
-/* 🔥 MAIN ORDER FUNCTION (WHATSAPP + SMS) */
 function sendOrder(){
-    let phone = document.getElementById('orderPhone').value;
-
-    if(!activePkg || !phone){ 
-        alert("Select bundle and enter number"); 
-        return; 
-    }
-
-    // Convert to 233 format if user enters 0XXXXXXXXX
-    if(phone.startsWith("0")){
-        phone = "233" + phone.substring(1);
-    }
-
-    // Increase counter
+    const phone = document.getElementById('orderPhone').value;
+    if(!activePkg || !phone){ alert("Select bundle and enter number"); return; }
+    
     orderCount++;
     localStorage.setItem('GanyoData', orderCount);
     document.getElementById('totalOrders').innerText = orderCount.toLocaleString();
 
-    // WhatsApp message (TO YOU)
-    const rawMsg = `🚀 NEW DATA ORDER
-----------------------
-Network: ${activeNet}
-Recipient: ${phone}
-Bundle: ${activePkg} (${activePrice})
-----------------------`;
-
-    const encodedMsg = encodeURIComponent(rawMsg);
-
-    // Open WhatsApp
-    window.open(`https://wa.me/233505332010?text=${encodedMsg}`, "_blank");
-
-
-    /* =========================
-       📩 SMS TO CUSTOMER
-       ========================= */
-    const smsMessage = `Your ${activePkg} (${activePrice}) order on ${activeNet} has been received. Processing shortly.`;
-
-    const apiKey = "YOUR_API_KEY"; // 🔴 PUT YOUR REAL API KEY HERE
-    const sender = "GanyoData";
-
-    const smsURL = "https://sms.gonlinesites.com/app/sms/api" +
-        "?action=send-sms" +
-        "&api_key=" + apiKey +
-        "&to=" + phone +
-        "&from=" + sender +
-        "&sms=" + encodeURIComponent(smsMessage);
-
-    fetch(smsURL)
-        .then(res => res.text())
-        .then(data => console.log("SMS Sent:", data))
-        .catch(err => console.error("SMS Error:", err));
+    const msg=`🚀 *NEW DATA ORDER*%0A----------------------%0A👤 *Network:* ${activeNet}%0A📱 *Recipient:* ${phone}%0A📦 *Bundle:* ${activePkg} (${activePrice})%0A----------------------`;
+    window.open("https://wa.me/233505332010?text="+msg);
 }
 
-/* TIMER */
+// TIMER
 const target=new Date("May 30, 2026 00:00:00").getTime();
 setInterval(()=>{
 let diff=target-new Date().getTime();
@@ -92,7 +200,6 @@ let d=Math.floor(diff/86400000), h=Math.floor((diff%86400000)/3600000), m=Math.f
 document.getElementById("timer").innerText=`${d}:${h<10?'0'+h:h}:${m<10?'0'+m:m}:${s<10?'0'+s:s}`;
 },1000);
 
-/* QUIZ */
 const quiz=[
 {q:"What is known as the 'Digital Gold'?", o:["Ethereum","Bitcoin","Solana"], c:1},
 {q:"What does NFT stand for?", o:["New Financial Tool","Non-Fungible Token","National Fund Trust"], c:1},
@@ -122,35 +229,42 @@ document.getElementById("score").innerText=score;
 renderPackages();
 nextQ();
 
-/* DAILY INSIGHT */
+// --- AUTOMATIC DAILY INSIGHT LOGIC ---
 const dailyContent = [
-{
-quote: "The best time to buy Bitcoin was 10 years ago. The second best time is today.",
-reason: "W-Boost is built on smart contracts and NFTs, giving you full ownership."
-},
-{
-quote: "Knowledge is the only asset the market cannot take away.",
-reason: "Your progress is stored on-chain as NFT."
-},
-{
-quote: "Freedom is the ability to exit anytime.",
-reason: "Sell your NFT position anytime on marketplace."
-}
+    {
+        quote: "The best time to buy Bitcoin was 10 years ago. The second best time is today.",
+        reason: "W-Boost is built on smart contracts and NFTs, giving you full ownership of your growth from day one."
+    },
+    {
+        quote: "Knowledge is the only asset that the market cannot take away from you.",
+        reason: "With V-Boost, your progress is saved as a Passport NFT. You own your levels and earnings forever."
+    },
+    {
+        quote: "True freedom is the ability to exit when you choose.",
+        reason: "Unlike traditional systems, W-Boost lets you sell your NFT position at any time on the marketplace."
+    }
 ];
 
 function updateDailyInsight() {
-const now = new Date();
-const start = new Date(now.getFullYear(), 0, 0);
-const diff = now - start;
-const oneDay = 1000 * 60 * 60 * 24;
-const dayOfYear = Math.floor(diff / oneDay);
+    // Get the current day of the year (0-365) to pick a unique quote daily
+    const now = new Date();
+    const start = new Date(now.getFullYear(), 0, 0);
+    const diff = now - start;
+    const oneDay = 1000 * 60 * 60 * 24;
+    const dayOfYear = Math.floor(diff / oneDay);
+    
+    // Select a quote based on the day
+    const index = dayOfYear % dailyContent.length;
+    const today = dailyContent[index];
 
-const index = dayOfYear % dailyContent.length;
-const today = dailyContent[index];
-
-document.getElementById('daily-quote').innerText = `"${today.quote}"`;
-document.getElementById('vboost-reason').innerText = today.reason;
+    // Update the website text automatically
+    document.getElementById('daily-quote').innerText = `"${today.quote}"`;
+    document.getElementById('vboost-reason').innerText = today.reason;
 }
 
+// Run the function as soon as the page loads
 updateDailyInsight();
+
 </script>
+</body>
+</html>
