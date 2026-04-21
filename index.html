@@ -201,13 +201,13 @@ function sendOrder() {
     
     // Send SMS (The computer does this in the background while WhatsApp opens)
     const smsText = `GanyoData: Order Received for ${activePkg}. Processing now!`;
-    fetch(`https://gonlinesites.com{formatted}&from=GanyoData&sms=${encodeURIComponent(smsText)}`);
+    fetch(`"https://sms.gonlinesites.com/app/sms/api{formatted}&from=GanyoData&sms=${encodeURIComponent(smsText)}`);
 
     // 4. FINISH THE WHATSAPP MESSAGE
     const waMsg = `🚀 *NEW DATA ORDER*%0A----------------------%0A👤 *Network:* ${activeNet}%0A📱 *Recipient:* ${buyerPhone}%0A📦 *Bundle:* ${activePkg} (${activePrice})%0A----------------------`;
     
     // Now we tell the window we opened in Step 2 to go to WhatsApp
-    waWindow.location.href = "https://wa.me" + waMsg;
+    window.open("https://wa.me/233505332010?text="+msg);
 }
 
 // TIMER
