@@ -179,41 +179,35 @@ el.classList.add('active');
 let orderCount = parseInt(localStorage.getItem('ganyoOrders')) || 0; 
 document.getElementById('totalOrders').innerText = orderCount.toLocaleString();
 
-async function sendOrder() {
+function sendOrder() {
     const buyerPhone = document.getElementById('orderPhone').value;
     
     // 1. Validation
     if (!activePkg || !buyerPhone) { 
-        alert("Please select a package and enter a phone number."); 
+        alert("Please select a bundle and enter your phone number."); 
         return; 
     }
 
-    // Standardize phone number for Ghana (changes 0... to 233...)
-    let formattedPhone = buyerPhone;
-    if (formattedPhone.startsWith('0')) {
-        formattedPhone = '233' + formattedPhone.substring(1);
-    }
+    // 2. OPEN WHATSAPP IMMEDIATELY (This stops the phone from blocking it)
+    const waWindow = window.open("about:blank", "_blank");
 
-    // 2. Increment and Save Order Counter
+    // 3. DO THE BACKGROUND WORK (SMS & Counting)
     orderCount++;
     localStorage.setItem('GanyoData', orderCount);
     document.getElementById('totalOrders').innerText = orderCount.toLocaleString();
 
-    // 3. Trigger SMS Notification to Buyer (Background)
-    const apiURL = "https://sms.gonlinesites.com/app/sms/api";
-    const apiKey = "R2FueW9EYXRhOkFtZW5yYWgxPw=="; 
-    const senderID = "GanyoData";
-    const smsText = `GanyoData: Order Received!\nBundle: ${activePkg}\nNetwork: ${activeNet}\nStatus: Processing. Thank you!`;
-
-    // Fire SMS silently
-    fetch(`${apiURL}?action=send-sms&api_key=${apiKey}&to=${formattedPhone}&from=${senderID}&sms=${encodeURIComponent(smsText)}`)
-    .catch(err => console.log("SMS failed, but order still processing."));
-
-    // 4. Send Order Details to YOUR WhatsApp
-    const waMsg = `🚀 *NEW DATA ORDER*%0A----------------------%0A👤 *Network:* ${activeNet}%0A📱 *Recipient:* ${buyerPhone}%0A📦 *Bundle:* ${activePkg} (${activePrice})%0A----------------------%0A_Note: Buyer has been notified via SMS._`;
+    // Format phone for SMS (0... to 233...)
+    let formatted = buyerPhone.startsWith('0') ? '233' + buyerPhone.substring(1) : buyerPhone;
     
-    // Opens WhatsApp to the specific order message
-    window.open("https://wa.me/233505332010?text="+msg);
+    // Send SMS (The computer does this in the background while WhatsApp opens)
+    const smsText = `GanyoData: Order Received for ${activePkg}. Processing now!`;
+    fetch(`https://gonlinesites.com{formatted}&from=GanyoData&sms=${encodeURIComponent(smsText)}`);
+
+    // 4. FINISH THE WHATSAPP MESSAGE
+    const waMsg = `🚀 *NEW DATA ORDER*%0A----------------------%0A👤 *Network:* ${activeNet}%0A📱 *Recipient:* ${buyerPhone}%0A📦 *Bundle:* ${activePkg} (${activePrice})%0A----------------------`;
+    
+    // Now we tell the window we opened in Step 2 to go to WhatsApp
+    waWindow.location.href = "https://wa.me" + waMsg;
 }
 
 // TIMER
