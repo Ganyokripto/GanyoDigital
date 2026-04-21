@@ -179,16 +179,46 @@ el.classList.add('active');
 let orderCount = parseInt(localStorage.getItem('ganyoOrders')) || 0; 
 document.getElementById('totalOrders').innerText = orderCount.toLocaleString();
 
-function sendOrder(){
-    const phone = document.getElementById('orderPhone').value;
-    if(!activePkg || !phone){ alert("Select bundle and enter number"); return; }
+function sendOrder() {
+    const buyerPhone = document.getElementById('orderPhone').value;
     
+    // 1. Validation
+    if (!activePkg || !buyerPhone) { 
+        alert("Please select a bundle and enter your phone number."); 
+        return; 
+    }
+
+    // 2. SMARTPHONE POPUP FIX: Open the window immediately
+    // Browsers allow this because it's a direct result of the user's click.
+    const waWindow = window.open("about:blank", "_blank");
+
+    // 3. BACKGROUND WORK: Update Counter
     orderCount++;
     localStorage.setItem('GanyoData', orderCount);
-    document.getElementById('totalOrders').innerText = orderCount.toLocaleString();
+    if (document.getElementById('totalOrders')) {
+        document.getElementById('totalOrders').innerText = orderCount.toLocaleString();
+    }
 
-    const msg=`🚀 *NEW DATA ORDER*%0A----------------------%0A👤 *Network:* ${activeNet}%0A📱 *Recipient:* ${phone}%0A📦 *Bundle:* ${activePkg} (${activePrice})%0A----------------------`;
-    window.open("https://wa.me/233505332010?text="+msg);
+    // Format phone for Ghana SMS API (0... to 233...)
+    let formatted = buyerPhone.startsWith('0') ? '233' + buyerPhone.substring(1) : buyerPhone;
+
+    // 4. TRIGGER SMS TO BUYER (G Online Sites API)
+    const apiURL = "https://sms.gonlinesites.com/app/sms/api";
+    const apiKey = "R2FueW9EYXRhOkFtZW5yYWgxPw=="; 
+    const senderID = "GanyoData";
+    const smsText = `🚀 GanyoData: Your order for ${activePkg} (${activeNet}) has been received! Processing now. Thank you!`;
+
+    // Fire the SMS silently in the background
+    fetch(`${apiURL}?action=send-sms&api_key=${apiKey}&to=${formatted}&from=${senderID}&sms=${encodeURIComponent(smsText)}`)
+    .catch(err => console.log("SMS background task complete."));
+
+    // 5. REDIRECT TO YOUR SPECIFIC WHATSAPP
+    const waMsg = `🚀 *NEW DATA ORDER*%0A----------------------%0A👤 *Network:* ${activeNet}%0A📱 *Recipient:* ${buyerPhone}%0A📦 *Bundle:* ${activePkg} (${activePrice})%0A----------------------%0A_A confirmation SMS has been sent to the buyer._`;
+    
+    // This updates the window we opened in Step 2 to your WhatsApp
+    waWindow.location.href = "https://wa.me/233505332010?text="+msg);
+}
+
 }
 
 // TIMER
