@@ -181,14 +181,45 @@ document.getElementById('totalOrders').innerText = orderCount.toLocaleString();
 
 function sendOrder(){
     const phone = document.getElementById('orderPhone').value;
-    if(!activePkg || !phone){ alert("Select bundle and enter number"); return; }
+
+    if(!activePkg || !phone){ 
+        alert("Select bundle and enter number"); 
+        return; 
+    }
     
+    // Increase order counter
     orderCount++;
     localStorage.setItem('GanyoData', orderCount);
     document.getElementById('totalOrders').innerText = orderCount.toLocaleString();
 
-    const msg=`🚀 *NEW DATA ORDER*%0A----------------------%0A👤 *Network:* ${activeNet}%0A📱 *Recipient:* ${phone}%0A📦 *Bundle:* ${activePkg} (${activePrice})%0A----------------------`;
-    window.open("https://wa.me/233505332010?text="+msg);
+    // WhatsApp message (for YOU)
+    const msg = `🚀 *NEW DATA ORDER*%0A----------------------%0A👤 *Network:* ${activeNet}%0A📱 *Recipient:* ${phone}%0A📦 *Bundle:* ${activePkg} (${activePrice})%0A----------------------`;
+
+    // Open WhatsApp to your number
+    window.open("https://wa.me/233505332010?text=" + msg, "_blank");
+
+
+    // -------------------------
+    // 📩 SMS SECTION (FOR CUSTOMER)
+    // -------------------------
+    const smsMessage = `Your order for ${activePkg} (${activePrice}) on ${activeNet} has been received. Processing shortly.`;
+
+    const apiKey = "YOUR_API_KEY"; // replace with your real API key
+    const sender = "GanyoData";
+
+    const smsURL = "https://sms.gonlinesites.com/app/sms/api" +
+        "?action=send-sms" +
+        "&api_key=" + apiKey +
+        "&to=" + phone +
+        "&from=" + sender +
+        "&sms=" + encodeURIComponent(smsMessage);
+
+    // Send SMS silently
+    fetch(smsURL)
+        .then(res => res.text())
+        .then(data => console.log("SMS Sent:", data))
+        .catch(err => console.error("SMS Error:", err));
+}
 }
 
 // TIMER
