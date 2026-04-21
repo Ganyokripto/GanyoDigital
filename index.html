@@ -19,7 +19,6 @@
         .logo { font-size: 1.5rem; font-weight: bold; color: var(--primary); }
         .motto { color: var(--accent); font-weight: bold; font-size: 0.9rem; }
 
-        /* COMPACT ORDER SECTION */
         .order-section { background: #fff; padding: 1.5rem 1rem; border-radius: 20px; margin: 15px 5%; color: #333; box-shadow: 0 10px 30px rgba(0,0,0,0.2); text-align: center; }
         .order-section h2 { color: var(--primary); margin-top: 0; font-size: 1.4rem; }
         
@@ -33,149 +32,137 @@
 
         .input-phone { padding: 12px; width: 100%; max-width: 280px; border: 2px solid #ddd; border-radius: 10px; font-size: 0.95rem; margin-bottom: 12px; outline: none; text-align: center; box-sizing: border-box; }
         
-        /* REDUCED SMARTPHONE COMPATIBLE BUTTON */
-        .order-btn { background: #25d366; color: white; border: none; padding: 12px 20px; border-radius: 50px; cursor: pointer; font-weight: bold; font-size: 1rem; width: 100%; max-width: 250px; display: flex; align-items: center; justify-content: center; gap: 8px; margin: 0 auto; text-decoration: none; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .order-btn { background: #25d366; color: white; border: none; padding: 12px 20px; border-radius: 50px; cursor: pointer; font-weight: bold; font-size: 1rem; width: 100%; max-width: 250px; display: flex; align-items: center; justify-content: center; gap: 8px; margin: 0 auto; text-decoration: none; }
 
         .services { padding: 1rem 5%; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
-        .card { background: var(--card-bg); padding: 1.5rem; border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); text-align: center; color: #333; display: flex; flex-direction: column; }
-        .card i { font-size: 2.5rem; color: var(--primary); margin-bottom: 1rem; }
-        .btn { display: inline-block; background: var(--primary); color: white; padding: 0.8rem 1.5rem; border-radius: 30px; text-decoration: none; font-weight: bold; margin-top: auto; font-size: 0.9rem; }
+        .card { background: var(--card-bg); padding: 1.5rem; border-radius: 20px; text-align: center; color: #333; display: flex; flex-direction: column; }
 
         .quiz-container { background: #fff; padding: 1.5rem; border-radius: 20px; margin: 15px 5%; color: #333; text-align: center; }
-        .option-btn { display: block; width: 100%; padding: 10px; margin: 6px 0; border: 1px solid #ddd; border-radius: 8px; cursor: pointer; text-align: left; background: white; font-size: 0.9rem; }
+        .option-btn { display: block; width: 100%; padding: 10px; margin: 6px 0; border: 1px solid #ddd; border-radius: 8px; cursor: pointer; text-align: left; background: white; }
 
         .vboost-box { background: rgba(0,0,0,0.2); margin: 15px auto; padding: 1rem; width: 90%; max-width: 800px; border-radius: 15px; border: 2px solid var(--accent); text-align: center; }
         #timer { font-size: 1.8rem; font-weight: 900; color: white; font-family: monospace; }
-        .footer { background: rgba(0,0,0,0.1); color: white; text-align: center; padding: 2rem 1rem; margin-top: 2rem; font-size: 0.85rem; }
+
+        .footer { text-align: center; padding: 2rem 1rem; }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="logo">GanyoKripto</div>
-        <div class="motto">Knowledge is Money</div>
-    </header>
+<header>
+    <div class="logo">GanyoKripto</div>
+    <div class="motto">Knowledge is Money</div>
+</header>
 
-    <section class="order-section">
-        <h2>📊 Buy Cheap Data</h2>
-        <div class="network-grid">
-            <div class="net-btn active" onclick="setNet('MTN', this)">MTN</div>
-            <div class="net-btn" onclick="setNet('Telecel', this)">Telecel</div>
-            <div class="net-btn" onclick="setNet('AirtelTigo', this)">AirtelTigo</div>
-        </div>
-        <div class="package-grid" id="pkgGrid"></div>
-        <input type="number" id="orderPhone" class="input-phone" placeholder="Recipient Phone Number">
-        
-        <button class="order-btn" onclick="sendCustomOrder()">
-            <i class="fa-brands fa-whatsapp"></i> Place Order Now
-        </button>
-    </section>
+<section class="order-section">
+    <h2>📊 Buy Cheap Data</h2>
 
-    <div class="services">
-        <div class="card">
-            <i class="fa-solid fa-chart-line"></i>
-            <h3>DeFi Portal</h3>
-            <a href="https://tactics-strategy.com" target="_blank" class="btn">Enter Portal</a>
-        </div>
-        <div class="card">
-            <i class="fa-solid fa-graduation-cap"></i>
-            <h3>Academy</h3>
-            <a href="https://v-academy.top" target="_blank" class="btn">Login Academy</a>
-        </div>
-        <div class="card">
-            <i class="fa-solid fa-users"></i>
-            <h3>Community</h3>
-            <a href="https://whatsapp.com" target="_blank" class="btn">Join Group</a>
-        </div>
+    <div class="network-grid">
+        <div class="net-btn active" onclick="setNet('MTN', this)">MTN</div>
+        <div class="net-btn" onclick="setNet('Telecel', this)">Telecel</div>
+        <div class="net-btn" onclick="setNet('AirtelTigo', this)">AirtelTigo</div>
     </div>
 
-    <div class="vboost-box">
-        <h2 style="color:var(--accent); margin:0; font-size: 0.9rem;">🚀 V-BOOST PROJECT LAUNCH</h2>
-        <div id="timer">00:00:00:00</div>
-    </section>
+    <div class="package-grid" id="pkgGrid"></div>
 
-    <section class="quiz-container">
-        <h2 style="color:var(--primary); margin-top:0; font-size: 1.2rem;">🎓 Crypto Quiz</h2>
-        <p id="quiz-question" style="font-weight: bold; font-size: 0.95rem;"></p>
-        <div id="quiz-options"></div>
-        <p id="quiz-feedback" style="margin-top:10px; font-weight:bold; font-size: 0.9rem;"></p>
-        <button class="pkg-btn" style="margin: 5px auto; display: block; padding: 8px 15px;" onclick="loadQuestion()">Next Question</button>
-    </section>
+    <input type="number" id="orderPhone" class="input-phone" placeholder="Recipient Phone Number">
 
-    <div class="footer">
-        <p>&copy; 2026 GanyoKripto | Support: 0505332010</p>
-    </div>
+    <button class="order-btn" onclick="sendCustomOrder()">
+        Place Order Now
+    </button>
+</section>
 
-    <script>
-        let activeNet = 'MTN', activePkg = '', activePrice = '';
-        const packages = [
-            {v: "1GB", p: "5.5"}, {v: "2GB", p: "10"}, {v: "3GB", p: "15"},
-            {v: "4GB", p: "20"}, {v: "5GB", p: "25"}, {v: "6GB", p: "30"},
-            {v: "7GB", p: "35"}, {v: "8GB", p: "49"}, {v: "10GB", p: "45"}
-        ];
+<div class="vboost-box">
+    <h3>🚀 V-BOOST PROJECT</h3>
+    <div id="timer">00:00:00:00</div>
+</div>
 
-        function renderPackages() {
-            document.getElementById('pkgGrid').innerHTML = packages.map(p => `
-                <div class="pkg-btn" onclick="setPkg('${p.v}', '¢${p.p}', this)">
-                    <b>${p.v}</b><br>¢${p.p}
-                </div>
-            `).join('');
-        }
+<section class="quiz-container">
+    <h2>Crypto Quiz</h2>
+    <p id="quiz-question"></p>
+    <div id="quiz-options"></div>
+    <p id="quiz-feedback"></p>
+</section>
 
-        function setNet(net, el) {
-            activeNet = net;
-            document.querySelectorAll('.net-btn').forEach(b => b.classList.remove('active'));
-            el.classList.add('active');
-        }
+<div class="footer">
+    <p>Support: 0505332010</p>
+</div>
 
-        function setPkg(pkg, price, el) {
-            activePkg = pkg;
-            activePrice = price;
-            document.querySelectorAll('.pkg-btn').forEach(b => b.classList.remove('active'));
-            el.classList.add('active');
-        }
+<script>
+let activeNet = 'MTN', activePkg = '', activePrice = '';
 
-        function sendCustomOrder() {
-            const phone = document.getElementById('orderPhone').value;
-            if (!activePkg || !phone) {
-                return alert("Please select a Bundle and enter the Phone Number!");
-            }
+const packages = [
+    {v:"1GB",p:"5.5"},{v:"2GB",p:"10"},{v:"3GB",p:"15"}
+];
 
-            const message = `🚀 *NEW DATA ORDER*%0A----------------------%0A👤 *Network:* ${activeNet}%0A📱 *Recipient:* ${phone}%0A📦 *Bundle:* ${activePkg} (${activePrice})%0A----------------------`;
-            
-            // This prioritizes the message delivery to your business number while using your link for tracking
-            window.open(`https://wa.me{message}`, '_blank');
-        }
+function renderPackages(){
+document.getElementById('pkgGrid').innerHTML = packages.map(p=>`
+<div class="pkg-btn" onclick="setPkg('${p.v}','¢${p.p}',this)">
+<b>${p.v}</b><br>¢${p.p}
+</div>`).join('');
+}
 
-        const quizData = [
-            { q: "Which asset is 'Digital Gold'?", a: ["Bitcoin", "Ethereum", "Doge"], c: 0 },
-            { q: "What does DeFi mean?", a: ["Decentralized Finance", "Digital Fees"], c: 0 }
-        ];
+function setNet(net,el){
+activeNet=net;
+document.querySelectorAll('.net-btn').forEach(b=>b.classList.remove('active'));
+el.classList.add('active');
+}
 
-        function loadQuestion() {
-            const q = quizData[Math.floor(Math.random() * quizData.length)];
-            document.getElementById('quiz-question').innerText = q.q;
-            document.getElementById('quiz-feedback').innerText = "";
-            document.getElementById('quiz-options').innerHTML = q.a.map((opt, i) => `
-                <button class="option-btn" onclick="checkAnswer(${i}, ${q.c})">${opt}</button>
-            `).join('');
-        }
+function setPkg(pkg,price,el){
+activePkg=pkg;
+activePrice=price;
+document.querySelectorAll('.pkg-btn').forEach(b=>b.classList.remove('active'));
+el.classList.add('active');
+}
 
-        function checkAnswer(i, correct) {
-            const f = document.getElementById('quiz-feedback');
-            f.innerText = i === correct ? "✅ Correct!" : "❌ Incorrect!";
-            f.style.color = i === correct ? "green" : "red";
-        }
+// ✅ FIXED WHATSAPP
+function sendCustomOrder(){
+const phone=document.getElementById('orderPhone').value;
 
-        const targetDate = new Date("May 20, 2026 00:00:00").getTime();
-        setInterval(() => {
-            const diff = targetDate - new Date().getTime();
-            const d = Math.floor(diff / 86400000), h = Math.floor((diff % 86400000) / 3600000), m = Math.floor((diff % 3600000) / 60000), s = Math.floor((diff % 60000) / 1000);
-            document.getElementById("timer").innerHTML = `${d}:${h < 10 ? '0'+h : h}:${m < 10 ? '0'+m : m}:${s < 10 ? '0'+s : s}`;
-        }, 1000);
+if(!activePkg || !phone){
+alert("Select bundle and enter phone");
+return;
+}
 
-        renderPackages();
-        loadQuestion();
-    </script>
+const msg=`NEW DATA ORDER
+Network:${activeNet}
+Phone:${phone}
+Bundle:${activePkg} (${activePrice})`;
+
+const url="https://wa.me/233505332010?text="+encodeURIComponent(msg);
+
+window.open(url,'_blank');
+}
+
+// TIMER
+const target=new Date("May 20, 2026 00:00:00").getTime();
+setInterval(()=>{
+let diff=target-new Date().getTime();
+let d=Math.floor(diff/86400000);
+let h=Math.floor((diff%86400000)/3600000);
+let m=Math.floor((diff%3600000)/60000);
+let s=Math.floor((diff%60000)/1000);
+document.getElementById("timer").innerHTML=`${d}:${h}:${m}:${s}`;
+},1000);
+
+// QUIZ
+const quizData=[
+{q:"Bitcoin is?",a:["Crypto","Bank"],c:0}
+];
+
+function loadQuestion(){
+let q=quizData[0];
+document.getElementById('quiz-question').innerText=q.q;
+document.getElementById('quiz-options').innerHTML=q.a.map((o,i)=>`
+<button onclick="check(${i},${q.c})">${o}</button>`).join('');
+}
+
+function check(i,c){
+document.getElementById('quiz-feedback').innerText = i===c?"Correct":"Wrong";
+}
+
+renderPackages();
+loadQuestion();
+</script>
+
 </body>
 </html>
