@@ -1,103 +1,217 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GanyoKripto | Fast Data & Services</title>
-    <link rel="stylesheet" href="https://cloudflare.com">
-    <style>
-        :root { 
-            --primary: #28a745; 
-            --accent: #ffc107; 
-            --bg: #28a745; 
-            --text: #ffffff; 
-            --card-bg: #ffffff;
-        }
-        
-        body { font-family: 'Segoe UI', Tahoma, sans-serif; margin: 0; background: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; }
-        header { background: #fff; padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
-        .logo { font-size: 1.5rem; font-weight: bold; color: var(--primary); }
-        .motto { color: var(--accent); font-weight: bold; font-size: 0.9rem; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GanyoKripto | Fast Data & Services</title>
 
-        .order-section { background: #fff; padding: 1.5rem 1rem; border-radius: 20px; margin: 15px 5%; color: #333; box-shadow: 0 10px 30px rgba(0,0,0,0.2); text-align: center; }
-        .order-section h2 { color: var(--primary); margin-top: 0; font-size: 1.4rem; }
-        
-        .network-grid { display: flex; gap: 8px; justify-content: center; margin-bottom: 15px; }
-        .net-btn { padding: 8px 15px; border: 2px solid #eee; border-radius: 8px; cursor: pointer; font-weight: bold; font-size: 0.85rem; }
-        .net-btn.active { border-color: var(--primary); background: #e8f5e9; color: var(--primary); }
+<!-- FIX ICONS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-        .package-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 15px; }
-        .pkg-btn { padding: 10px 5px; border: 1px solid #ddd; border-radius: 8px; cursor: pointer; transition: 0.2s; font-size: 0.75rem; background: #fdfdfd; color: #333; }
-        .pkg-btn.active { border-color: var(--primary); background: var(--primary); color: white; font-weight: bold; }
+<style>
+:root { 
+--primary:#28a745; 
+--accent:#ffc107; 
+--bg:#28a745; 
+--text:#ffffff; 
+--card-bg:#ffffff;
+}
 
-        .input-phone { padding: 12px; width: 100%; max-width: 280px; border: 2px solid #ddd; border-radius: 10px; font-size: 0.95rem; margin-bottom: 12px; outline: none; text-align: center; box-sizing: border-box; }
-        
-        .order-btn { background: #25d366; color: white; border: none; padding: 12px 20px; border-radius: 50px; cursor: pointer; font-weight: bold; font-size: 1rem; width: 100%; max-width: 250px; display: flex; align-items: center; justify-content: center; gap: 8px; margin: 0 auto; text-decoration: none; }
+body {
+font-family:'Segoe UI',sans-serif;
+margin:0;
+background:var(--bg);
+color:var(--text);
+}
 
-        .services { padding: 1rem 5%; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
-        .card { background: var(--card-bg); padding: 1.5rem; border-radius: 20px; text-align: center; color: #333; display: flex; flex-direction: column; }
+header {
+background:#fff;
+padding:1rem 5%;
+display:flex;
+justify-content:space-between;
+}
 
-        .quiz-container { background: #fff; padding: 1.5rem; border-radius: 20px; margin: 15px 5%; color: #333; text-align: center; }
-        .option-btn { display: block; width: 100%; padding: 10px; margin: 6px 0; border: 1px solid #ddd; border-radius: 8px; cursor: pointer; text-align: left; background: white; }
+.logo { color:var(--primary); font-weight:bold; }
+.motto { color:var(--accent); }
 
-        .vboost-box { background: rgba(0,0,0,0.2); margin: 15px auto; padding: 1rem; width: 90%; max-width: 800px; border-radius: 15px; border: 2px solid var(--accent); text-align: center; }
-        #timer { font-size: 1.8rem; font-weight: 900; color: white; font-family: monospace; }
+.order-section {
+background:#fff;
+padding:1.5rem;
+border-radius:20px;
+margin:15px 5%;
+color:#333;
+text-align:center;
+}
 
-        .footer { text-align: center; padding: 2rem 1rem; }
-    </style>
+.network-grid { display:flex; gap:8px; justify-content:center; }
+.net-btn { padding:8px 15px; border:2px solid #eee; border-radius:8px; cursor:pointer; }
+.net-btn.active { background:#e8f5e9; border-color:var(--primary); }
+
+.package-grid {
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:8px;
+margin:15px 0;
+}
+
+.pkg-btn {
+padding:10px;
+border:1px solid #ddd;
+border-radius:8px;
+cursor:pointer;
+font-size:0.8rem;
+}
+.pkg-btn.active {
+background:var(--primary);
+color:white;
+}
+
+.input-phone {
+padding:12px;
+width:100%;
+max-width:280px;
+border-radius:10px;
+margin-bottom:10px;
+}
+
+.order-btn {
+background:#25d366;
+color:white;
+padding:12px;
+border-radius:50px;
+cursor:pointer;
+width:100%;
+max-width:250px;
+}
+
+.services {
+padding:1rem 5%;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:1rem;
+}
+
+.card {
+background:white;
+padding:1rem;
+border-radius:15px;
+text-align:center;
+color:#333;
+}
+
+.vboost-box {
+margin:15px auto;
+padding:1rem;
+border:2px solid var(--accent);
+text-align:center;
+}
+
+#timer { font-size:1.6rem; }
+
+.quiz-container {
+background:#fff;
+padding:1rem;
+margin:15px 5%;
+border-radius:15px;
+color:#333;
+text-align:center;
+}
+
+.option-btn {
+display:block;
+width:100%;
+padding:10px;
+margin:5px 0;
+border-radius:8px;
+cursor:pointer;
+}
+
+.score { font-weight:bold; margin-top:10px; }
+
+.footer { text-align:center; padding:20px; }
+</style>
 </head>
+
 <body>
 
 <header>
-    <div class="logo">GanyoKripto</div>
-    <div class="motto">Knowledge is Money</div>
+<div class="logo">GanyoKripto</div>
+<div class="motto">Knowledge is Money</div>
 </header>
 
+<!-- ORDER -->
 <section class="order-section">
-    <h2>📊 Buy Cheap Data</h2>
+<h2>Buy Cheap Data</h2>
 
-    <div class="network-grid">
-        <div class="net-btn active" onclick="setNet('MTN', this)">MTN</div>
-        <div class="net-btn" onclick="setNet('Telecel', this)">Telecel</div>
-        <div class="net-btn" onclick="setNet('AirtelTigo', this)">AirtelTigo</div>
-    </div>
-
-    <div class="package-grid" id="pkgGrid"></div>
-
-    <input type="number" id="orderPhone" class="input-phone" placeholder="Recipient Phone Number">
-
-    <button class="order-btn" onclick="sendCustomOrder()">
-        Place Order Now
-    </button>
-</section>
-
-<div class="vboost-box">
-    <h3>🚀 V-BOOST PROJECT</h3>
-    <div id="timer">00:00:00:00</div>
+<div class="network-grid">
+<div class="net-btn active" onclick="setNet('MTN',this)">MTN</div>
+<div class="net-btn" onclick="setNet('Telecel',this)">Telecel</div>
+<div class="net-btn" onclick="setNet('AirtelTigo',this)">AirtelTigo</div>
 </div>
 
+<div class="package-grid" id="pkgGrid"></div>
+
+<input type="number" id="orderPhone" class="input-phone" placeholder="Recipient Number">
+
+<button class="order-btn" onclick="sendOrder()">Place Order</button>
+</section>
+
+<!-- SERVICES -->
+<div class="services">
+<div class="card">
+<h3>DeFi Portal</h3>
+<a href="https://tactics-strategy.com" target="_blank">Enter</a>
+</div>
+
+<div class="card">
+<h3>Academy</h3>
+<a href="https://v-academy.top" target="_blank">Login</a>
+</div>
+
+<div class="card">
+<h3>Community</h3>
+<a href="https://whatsapp.com" target="_blank">Join</a>
+</div>
+</div>
+
+<!-- TIMER -->
+<div class="vboost-box">
+<h3>V-BOOST LAUNCH</h3>
+<div id="timer">00:00:00:00</div>
+</div>
+
+<!-- QUIZ -->
 <section class="quiz-container">
-    <h2>Crypto Quiz</h2>
-    <p id="quiz-question"></p>
-    <div id="quiz-options"></div>
-    <p id="quiz-feedback"></p>
+<h3>Crypto Quiz</h3>
+
+<p id="qText"></p>
+<div id="qOptions"></div>
+<p id="qRes"></p>
+
+<div class="score">Score: <span id="score">0</span></div>
+
+<button onclick="nextQ()">Next Question</button>
 </section>
 
 <div class="footer">
-    <p>Support: 0505332010</p>
+Support: 0505332010
 </div>
 
 <script>
-let activeNet = 'MTN', activePkg = '', activePrice = '';
 
-const packages = [
-    {v:"1GB",p:"5.5"},{v:"2GB",p:"10"},{v:"3GB",p:"15"}
+// PACKAGES
+let activeNet='MTN', activePkg='', activePrice='';
+
+const packages=[
+{v:"1GB",p:"5.5"},{v:"2GB",p:"10"},{v:"3GB",p:"15"},
+{v:"4GB",p:"20"},{v:"5GB",p:"25"},{v:"6GB",p:"30"},
+{v:"7GB",p:"35"},{v:"8GB",p:"40"},{v:"10GB",p:"45"}
 ];
 
 function renderPackages(){
 document.getElementById('pkgGrid').innerHTML = packages.map(p=>`
 <div class="pkg-btn" onclick="setPkg('${p.v}','¢${p.p}',this)">
-<b>${p.v}</b><br>¢${p.p}
+${p.v}<br>¢${p.p}
 </div>`).join('');
 }
 
@@ -114,12 +228,12 @@ document.querySelectorAll('.pkg-btn').forEach(b=>b.classList.remove('active'));
 el.classList.add('active');
 }
 
-// ✅ FIXED WHATSAPP
-function sendCustomOrder(){
+// WHATSAPP FIX
+function sendOrder(){
 const phone=document.getElementById('orderPhone').value;
 
 if(!activePkg || !phone){
-alert("Select bundle and enter phone");
+alert("Select bundle and enter number");
 return;
 }
 
@@ -128,40 +242,66 @@ Network:${activeNet}
 Phone:${phone}
 Bundle:${activePkg} (${activePrice})`;
 
-const url="https://wa.me/233505332010?text="+encodeURIComponent(msg);
-
-window.open(url,'_blank');
+window.open("https://wa.me/233505332010?text="+encodeURIComponent(msg));
 }
 
 // TIMER
 const target=new Date("May 20, 2026 00:00:00").getTime();
+
 setInterval(()=>{
-let diff=target-new Date().getTime();
+let now=new Date().getTime();
+let diff=target-now;
+
+if(diff<0){
+document.getElementById("timer").innerText="LIVE";
+return;
+}
+
 let d=Math.floor(diff/86400000);
 let h=Math.floor((diff%86400000)/3600000);
 let m=Math.floor((diff%3600000)/60000);
 let s=Math.floor((diff%60000)/1000);
-document.getElementById("timer").innerHTML=`${d}:${h}:${m}:${s}`;
+
+document.getElementById("timer").innerText=
+`${d}:${h<10?'0'+h:h}:${m<10?'0'+m:m}:${s<10?'0'+s:s}`;
 },1000);
 
 // QUIZ
-const quizData=[
-{q:"Bitcoin is?",a:["Crypto","Bank"],c:0}
+const quiz=[
+{q:"Bitcoin is?",o:["Crypto","Bank","App"],c:0},
+{q:"NFT means?",o:["Token","Non-Fungible Token","Coin"],c:1},
+{q:"DeFi means?",o:["Decentralized Finance","Digital Fee"],c:0},
+{q:"HODL means?",o:["Hold","Sell"],c:0}
 ];
 
-function loadQuestion(){
-let q=quizData[0];
-document.getElementById('quiz-question').innerText=q.q;
-document.getElementById('quiz-options').innerHTML=q.a.map((o,i)=>`
-<button onclick="check(${i},${q.c})">${o}</button>`).join('');
+let score=0, curQ=0;
+
+function nextQ(){
+curQ=Math.floor(Math.random()*quiz.length);
+let q=quiz[curQ];
+
+document.getElementById("qText").innerText=q.q;
+
+document.getElementById("qOptions").innerHTML=q.o.map((opt,i)=>`
+<button class="option-btn" onclick="check(${i})">${opt}</button>`).join('');
+
+document.getElementById("qRes").innerText="";
 }
 
-function check(i,c){
-document.getElementById('quiz-feedback').innerText = i===c?"Correct":"Wrong";
+function check(i){
+if(i===quiz[curQ].c){
+score++;
+document.getElementById("qRes").innerText="Correct";
+}else{
+document.getElementById("qRes").innerText="Wrong";
+}
+
+document.getElementById("score").innerText=score;
 }
 
 renderPackages();
-loadQuestion();
+nextQ();
+
 </script>
 
 </body>
