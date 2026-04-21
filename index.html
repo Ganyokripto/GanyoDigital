@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ganyo Digital | Order Data</title>
+    <title>Ganyo Digital | Pro Portal</title>
     <link rel="stylesheet" href="https://cloudflare.com">
     <style>
         :root { --primary: #22c55e; --bg: #0f172a; --card: #1e293b; --accent: #fbbf24; }
-        body { margin: 0; font-family: 'Segoe UI', sans-serif; background: var(--bg); color: white; padding-bottom: 90px; }
+        body { margin: 0; font-family: 'Segoe UI', sans-serif; background: var(--bg); color: white; padding-bottom: 90px; scroll-behavior: smooth; }
         
         header { background: #fff; color: #0f172a; padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; }
         .logo { color: var(--primary); font-weight: 800; font-size: 1.4rem; }
@@ -15,21 +15,44 @@
         .section { padding: 2rem 5%; }
         .center { text-align: center; }
 
-        /* SIMPLE ORDER FORM */
+        /* HERO & TIMER */
+        .hero { text-align: center; padding: 2rem 5%; background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%); }
+        #timer { font-size: 1.5rem; color: var(--accent); font-weight: bold; font-family: monospace; border: 2px solid var(--accent); padding: 8px 15px; border-radius: 12px; display: inline-block; margin-top: 10px; }
+
+        /* ORDER CARD */
         .order-card { background: white; color: #0f172a; padding: 2rem; border-radius: 20px; max-width: 450px; margin: 20px auto; box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 2px solid var(--primary); }
-        .payment-tag { background: #f0fdf4; border: 1px solid var(--primary); padding: 10px; border-radius: 10px; margin-bottom: 20px; font-size: 0.9rem; }
+        .payment-tag { background: #f0fdf4; border: 1px solid var(--primary); padding: 12px; border-radius: 10px; margin-bottom: 20px; font-size: 0.95rem; line-height: 1.4; }
         
         label { display: block; margin-top: 15px; font-weight: bold; font-size: 0.9rem; text-align: left; }
         input, select { width: 100%; padding: 12px; margin-top: 5px; border: 2px solid #e2e8f0; border-radius: 10px; font-size: 1rem; box-sizing: border-box; }
         
-        .order-btn { background: var(--primary); color: white; padding: 16px; border: none; border-radius: 12px; cursor: pointer; font-weight: 800; width: 100%; font-size: 1.2rem; margin-top: 20px; transition: 0.3s; }
-        .order-btn:hover { background: #16a34a; transform: translateY(-2px); }
+        /* FIXED WHATSAPP BUTTON (ANCHOR STYLED AS BUTTON) */
+        .wa-btn { 
+            display: block; 
+            background-color: var(--primary); 
+            color: white; 
+            padding: 16px; 
+            text-decoration: none; 
+            border-radius: 12px; 
+            font-weight: 800; 
+            font-size: 1.1rem; 
+            text-align: center; 
+            margin-top: 25px; 
+            transition: 0.3s; 
+            box-shadow: 0 4px 15px rgba(34, 197, 94, 0.4); 
+        }
+        .wa-btn:hover { background-color: #16a34a; transform: translateY(-2px); }
 
-        /* PORTAL & QUIZ STYLING */
+        /* ASSET CARDS */
         .pro-card { background: var(--card); padding: 1.5rem; border-radius: 15px; text-align: center; margin-bottom: 15px; border: 1px solid #334155; }
-        .btn-link { display: inline-block; padding: 10px 20px; border: 2px solid var(--primary); color: white; text-decoration: none; border-radius: 25px; margin-top: 10px; font-weight: bold; }
-        
-        #timer { font-size: 1.4rem; color: var(--accent); font-weight: bold; font-family: monospace; }
+        .btn-link { display: inline-block; padding: 10px 20px; border: 2px solid var(--primary); color: white; text-decoration: none; border-radius: 25px; margin-top: 10px; font-weight: bold; transition: 0.2s; }
+        .btn-link:hover { background: var(--primary); }
+
+        /* QUIZ BOX */
+        .quiz-box { background: var(--card); padding: 2rem; border-radius: 20px; border: 1px solid #334155; }
+        .quiz-opt { display: block; width: 100%; margin: 8px 0; padding: 12px; background: #334155; color: white; border: 1px solid #475569; border-radius: 10px; cursor: pointer; text-align: left; font-size: 1rem; }
+
+        /* BOTTOM NAV */
         #bottomNav { position: fixed; bottom: 0; width: 100%; background: #fff; display: flex; justify-content: space-around; padding: 12px 0; z-index: 1000; box-shadow: 0 -5px 15px rgba(0,0,0,0.1); }
         #bottomNav button { background: none; border: none; color: #64748b; font-weight: bold; cursor: pointer; font-size: 0.8rem; }
     </style>
@@ -42,14 +65,14 @@
 </header>
 
 <section class="section center">
-    <h1>Knowledge is Money</h1>
-    <p style="color: #94a3b8;">Order your data bundle below.</p>
+    <h1 style="margin-bottom: 5px;">Knowledge is Money</h1>
+    <p style="color: #94a3b8; margin-top: 0;">Secure your data, secure your future.</p>
 
-    <!-- SIMPLE ORDER FORM -->
+    <!-- ORDER FORM -->
     <div class="order-card">
         <div class="payment-tag">
-            <i class="fas fa-wallet"></i> Pay: <b>0242366444</b><br>
-            (Michael A. Believe)
+            <i class="fas fa-wallet"></i> Pay to: <b>0242366444</b><br>
+            Name: <b>Michael A. Believe</b>
         </div>
 
         <label>Number to receive data</label>
@@ -75,13 +98,14 @@
             <option value="10GB (¢45)">10GB - ¢45</option>
         </select>
 
-        <button class="order-btn" onclick="placeOrder()">
+        <!-- THE FIXED WHATSAPP LINK -->
+        <a href="javascript:void(0)" class="wa-btn" onclick="placeOrder()">
             <i class="fab fa-whatsapp"></i> PLACE ORDER NOW
-        </button>
+        </a>
     </div>
 </section>
 
-<!-- PORTAL & ACADEMY -->
+<!-- PORTAL & ASSETS -->
 <section class="section" id="portal">
     <div class="pro-card">
         <i class="fas fa-chart-line" style="color: var(--primary); font-size: 2rem;"></i>
@@ -97,27 +121,29 @@
 
 <!-- QUIZ SECTION -->
 <section class="section center" id="quiz">
-    <div style="background: var(--card); padding: 2rem; border-radius: 20px; border: 1px solid #334155;">
+    <div class="quiz-box">
         <h2 style="color: var(--primary); margin-top: 0;">🧠 Blockchain Quiz</h2>
-        <p id="qText" style="font-weight: bold; min-height: 50px;"></p>
+        <p id="qText" style="font-weight: bold; min-height: 50px; font-size: 1.1rem;"></p>
         <div id="qOptions"></div>
-        <p id="qRes" style="margin-top: 10px; font-weight: bold;"></p>
-        <button onclick="nextQ()" style="background:none; border: 1px solid var(--primary); color: var(--primary); padding: 8px 15px; border-radius: 20px; cursor: pointer; margin-top: 10px;">Next Question</button>
+        <p id="qRes" style="margin-top: 15px; font-weight: bold;"></p>
+        <button onclick="nextQ()" style="background:none; border: 1px solid var(--primary); color: var(--primary); padding: 10px 20px; border-radius: 20px; cursor: pointer; margin-top: 15px; font-weight: bold;">Next Question</button>
     </div>
 </section>
 
 <div id="bottomNav">
     <button onclick="window.scrollTo(0,0)"><i class="fas fa-home"></i><br>Home</button>
-    <button onclick="document.getElementById('portal').scrollIntoView()"><i class="fas fa-cubes"></i><br>Assets</button>
+    <button onclick="document.getElementById('portal').scrollIntoView()"><i class="fas fa-cubes"></i><br>Portal</button>
     <button onclick="document.getElementById('quiz').scrollIntoView()"><i class="fas fa-brain"></i><br>Quiz</button>
-    <button onclick="window.open('https://whatsapp.com')"><i class="fab fa-whatsapp"></i><br>Group</button>
+    <button onclick="window.open('https://whatsapp.com')"><i class="fab fa-whatsapp"></i><br>Join</button>
 </div>
 
 <script>
+// WHATSAPP ORDER LOGIC
 function placeOrder() {
     const phone = document.getElementById('userPhone').value;
     const network = document.getElementById('userNetwork').value;
     const bundle = document.getElementById('userBundle').value;
+    const adminWhatsApp = "233505332010";
 
     if (phone.length < 10) {
         alert("Please enter a valid 10-digit number.");
@@ -126,14 +152,14 @@ function placeOrder() {
 
     const message = "🚀 *NEW DATA ORDER*%0A----------------------%0A👤 *Network:* " + network + "%0A📱 *Recipient:* " + phone + "%0A📦 *Bundle:* " + bundle + "%0A----------------------%0A_Paying to Michael A. Believe now._";
 
-    // Hard-coded your number 233505332010 to fix the error
-    window.location.href = "https://wa.me" + message;
+    window.open("https://wa.me" + adminWhatsApp + "?text=" + message, "_blank");
 }
 
 // TIMER (May 20, 2026)
-const target = new Date("May 20, 2026 00:00:00").getTime();
+const targetDate = new Date("May 20, 2026 00:00:00").getTime();
 setInterval(() => {
-    const diff = target - new Date().getTime();
+    const now = new Date().getTime();
+    const diff = targetDate - now;
     if(diff < 0) { document.getElementById("timer").innerText = "LIVE!"; return; }
     const h = Math.floor(diff / 3600000);
     const m = Math.floor((diff % 3600000) / 60000);
@@ -141,32 +167,32 @@ setInterval(() => {
     document.getElementById("timer").innerText = h + ":" + (m < 10 ? '0'+m : m) + ":" + (s < 10 ? '0'+s : s);
 }, 1000);
 
-// QUIZ DATA
+// QUIZ DATA (25 QUESTIONS)
 const quizzes = [
     {q: "What is the maximum supply of Bitcoin?", o: ["21 Million", "100 Million", "Unlimited"], c: 0},
-    {q: "Who created Bitcoin?", o: ["Satoshi Nakamoto", "Vitalik Buterin", "Elon Musk"], c: 0},
-    {q: "What is HODL?", o: ["Holding long term", "A type of coin", "Selling fast"], c: 0},
-    {q: "What is a Private Key?", o: ["Password for access", "Username", "Wallet address"], c: 0},
-    {q: "What is an NFT?", o: ["Non-Fungible Token", "New Finance Tech", "Net Fast Trade"], c: 0},
-    {q: "What is DeFi?", o: ["Decentralized Finance", "Deep Finance", "Digital Fiat"], c: 0},
     {q: "Smallest unit of Bitcoin?", o: ["Satoshi", "Wei", "Gwei"], c: 0},
-    {q: "What is a Cold Wallet?", o: ["Hardware/Offline", "Online app", "Exchange"], c: 0},
-    {q: "What is Staking?", o: ["Locking coins for rewards", "Selling", "Mining"], c: 0},
+    {q: "What is HODL?", o: ["Holding long term", "Selling fast", "High output digital loan"], c: 0},
+    {q: "Who created Bitcoin?", o: ["Satoshi Nakamoto", "Vitalik Buterin", "Elon Musk"], c: 0},
+    {q: "What is an NFT?", o: ["Non-Fungible Token", "New Finance Tech", "Net Fast Trade"], c: 0},
+    {q: "What is DeFi?", o: ["Decentralized Finance", "Digital Fiat", "Deep Finance"], c: 0},
+    {q: "What is a Private Key?", o: ["Access password", "Username", "Wallet address"], c: 0},
+    {q: "What is a Cold Wallet?", o: ["Offline storage", "Online app", "Exchange"], c: 0},
+    {q: "What is Staking?", o: ["Locking coins for rewards", "Mining", "Selling"], c: 0},
     {q: "What is FOMO?", o: ["Fear Of Missing Out", "Future of Money", "Fast Mining"], c: 0},
     {q: "What is a Whale?", o: ["Large crypto holder", "A beginner", "A scammer"], c: 0},
     {q: "What is a Stablecoin?", o: ["Pegged to USD", "Very volatile", "Type of NFT"], c: 0},
     {q: "What is MetaMask?", o: ["Browser wallet", "A game", "A crypto coin"], c: 0},
     {q: "What is 'Gas'?", o: ["Transaction fee", "Fuel", "A coin"], c: 0},
-    {q: "What is an Airdrop?", o: ["Free tokens", "Selling fast", "A scam"], c: 0},
+    {q: "What is an Airdrop?", o: ["Free tokens", "A scam", "Selling fast"], c: 0},
     {q: "What is a Bull Market?", o: ["Prices rising", "Prices falling", "Market flat"], c: 0},
     {q: "What is a Bear Market?", o: ["Prices falling", "Prices rising", "Market flat"], c: 0},
     {q: "What is KYC?", o: ["Know Your Customer", "Keep Your Crypto", "Key Yield"], c: 0},
-    {q: "What is a DAO?", o: ["Decentralized Org", "Digital Asset Only", "Daily Order"], c: 0},
+    {q: "What is a DAO?", o: ["Decentralized Org", "Digital Asset", "Daily Order"], c: 0},
     {q: "What is 'Burn'?", o: ["Removing supply", "Hacking", "Losing money"], c: 0},
     {q: "What is Solidity?", o: ["Coding language", "A coin", "A wallet"], c: 0},
     {q: "What is a DEX?", o: ["Decentralized Exchange", "Digital Entry", "Daily Exchange"], c: 0},
-    {q: "What is a Whitepaper?", o: ["Project guide", "Flyer", "Receipt"], c: 0},
-    {q: "What is a Seed Phrase?", o: ["Recovery recovery words", "Username", "Public Key"], c: 0},
+    {q: "What is a Whitepaper?", o: ["Project technical guide", "Flyer", "Receipt"], c: 0},
+    {q: "What is a Seed Phrase?", o: ["Recovery words", "Username", "Public Key"], c: 0},
     {q: "What is the BNB Chain?", o: ["Binance network", "Bitcoin chain", "Bank network"], c: 0}
 ];
 
@@ -176,17 +202,17 @@ function nextQ(){
     const q = quizzes[curQ];
     document.getElementById("qText").innerText = q.q;
     document.getElementById("qOptions").innerHTML = q.o.map((opt, i) => 
-        `<button onclick="checkQ(${i})" style="display:block; width:100%; margin:8px 0; padding:12px; background:#334155; color:white; border:1px solid #475569; border-radius:10px; cursor:pointer; text-align:left;">${opt}</button>`).join('');
+        `<button onclick="checkQ(${i})" class="quiz-opt">${opt}</button>`).join('');
     document.getElementById("qRes").innerText = "";
 }
 function checkQ(i){
     const res = document.getElementById("qRes");
     if(i === quizzes[curQ].c){
-        res.innerText = "✅ Correct!";
+        res.innerText = "✅ Correct! Smart choice.";
         res.style.color = "var(--primary)";
     } else {
-        res.innerText = "❌ Wrong! Try again.";
-        res.style.color = "red";
+        res.innerText = "❌ Wrong! Keep studying.";
+        res.style.color = "#ef4444";
     }
 }
 nextQ();
