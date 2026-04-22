@@ -182,11 +182,8 @@ el.classList.add('active');
 }
 
 // ORDER COUNTER LOGIC - ONLY INCREASES ON CLICK
-    // --- ADD THESE 3 LINES ONLY ---
-    let newCount = (parseInt(localStorage.getItem("ganyo_final_v12")) || 0) + 1;
-    localStorage.setItem("ganyo_final_v12", newCount);
-    document.getElementById('totalOrders').innerText = newCount.toLocaleString();
-
+let orderCount = parseInt(localStorage.getItem('ganyoOrders')) || 0; 
+document.getElementById('totalOrders').innerText = orderCount.toLocaleString();
 
 function sendOrder(){
     const phone = document.getElementById('orderPhone').value;
@@ -283,5 +280,6 @@ updateDailyInsight();
         }
     });
 </script>
+
 </body>
 </html>
