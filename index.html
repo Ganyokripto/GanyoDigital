@@ -275,7 +275,7 @@ updateDailyInsight();
     <script>
     // 1. READ: Get the saved number immediately when page loads
     // We use a unique key 'ganyo_official_count' to avoid old data
-    let orderCount = parseInt(localStorage.getItem('ganyo_official_count')) || 0;
+    let orderCount = parseInt(localStorage.getItem('ganyo_final_v1')) || 0;
 
     // 2. DISPLAY: Show that saved number on the screen
     const counterDisplay = document.getElementById('totalOrders');
@@ -297,7 +297,7 @@ updateDailyInsight();
         orderCount++;
 
         // SAVE to memory so it sticks after refresh
-        localStorage.setItem('ganyo_official_count', orderCount);
+        localStorage.setItem('ganyo_final_v1', orderCount);
 
         // Update the screen
         if (counterDisplay) {
@@ -305,7 +305,7 @@ updateDailyInsight();
         }
 
         // --- Your WhatsApp redirect code goes here ---
-        console.log("Order submitted for: " + phone);
+        console.log("Order submitted for: " +233505332010);
     }
 </script>
 
