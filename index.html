@@ -64,18 +64,19 @@ header { background:#fff; padding:1rem 5%; display:flex; justify-content:space-b
 </header>
 
 <!-- Compact Mobile Price Card -->
-<div style="width: 100%; display: flex; justify-content: center; margin: 15px 0;">
-    <script src="https://coingecko.com"></script>
+<div style="width: 100%; display: flex; justify-content: center; margin: 15px 0; min-height: 50px;">
+    <!-- Correct Script for Headline Widget -->
+    <script src="https://widgets.coingecko.com/gecko-coin-price-static-headline-widget.js"></script>
+    
+    <!-- Use 'coin-ids' (plural) for this specific widget -->
     <gecko-coin-price-static-headline-widget 
         locale="en" 
         outlined="true" 
-        coin-id="whalebit" 
+        coin-ids="whalebit" 
         initial-currency="usd">
     </gecko-coin-price-static-headline-widget>
 </div>
-
-
-
+    
 <!-- PAYMENT INSTRUCTIONS SECTION -->
 <section style="background: #fff; padding: 1.5rem; border-radius: 20px; margin: 15px 5%; color: #333; border: 2px solid var(--accent); text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
     <h2 style="color: var(--primary); margin-top: 0; font-size: 1.3rem;">💳 Payment Instructions</h2>
