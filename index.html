@@ -63,20 +63,9 @@ header { background:#fff; padding:1rem 5%; display:flex; justify-content:space-b
 <div class="motto">Powered By: GanyoKripto</div>
 </header>
 
-<div class="price-card">
-    <div class="price-header">
-        <span>💰 CES LIVE PRICE</span>
-    </div>
+<script src="https://coingecko.com"></script>
+<gecko-coin-ticker-widget locale="en" outlined="true" coin-id="whalebit" initial-currency="usd"></gecko-coin-ticker-widget>
 
-    <div class="price-main">
-        <span id="cesPrice">$0.00</span>
-        <span id="cesChange" class="change">0%</span>
-    </div>
-
-    <div class="price-footer">
-        <small>Updated live</small>
-    </div>
-</div>
     
 <!-- PAYMENT INSTRUCTIONS SECTION -->
 <section style="background: #fff; padding: 1.5rem; border-radius: 20px; margin: 15px 5%; color: #333; border: 2px solid var(--accent); text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
