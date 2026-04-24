@@ -109,19 +109,23 @@ header { background:#fff; padding:1rem 5%; display:flex; justify-content:space-b
 </section>
     
 <section class="order-section">
-<h2>Buy Affordable - Fast Data</h2>
-<div class="network-grid">
-<div class="net-btn active" onclick="setNet('MTN',this)">MTN</div>
-<div class="net-btn" onclick="setNet('Telecel',this)">Telecel</div>
-<div class="net-btn" onclick="setNet('AirtelTigo',this)">AirtelTigo</div>
-</div>
+    <h2 style="color: var(--primary);">🛒 Order Data</h2>
+    <div class="network-grid">
+        <button class="net-btn active" onclick="selectNet('MTN')">MTN</button>
+        <button class="net-btn" onclick="selectNet('Telecel')">Telecel</button>
+        <button class="net-btn" onclick="selectNet('AirtelTigo')">AirtelTigo</button>
+    </div>
 
-<div class="package-grid" id="pkgGrid"></div>
+    <!-- THIS BOX MUST HAVE id="dataPlan" -->
+    <select id="dataPlan" class="input-phone" style="margin: 15px 0; width: 100%; padding: 10px; border-radius: 8px;">
+        <option value="">Select Bundle</option>
+    </select>
 
-<input type="number" id="orderPhone" class="input-phone" placeholder="Recipient Number">
-<button class="order-btn" onclick="sendOrder()">Place Order Now</button>
-<br>
-<div class="order-count"><i class="fa fa-check-circle"></i> <span id="totalOrders">0</span> Orders Processed</div>
+    <input type="number" id="orderPhone" class="input-phone" placeholder="Recipient Number" style="width: 100%; padding: 10px; border-radius: 8px; margin-bottom: 15px;">
+    
+    <button class="order-btn" onclick="sendOrder()" style="background: var(--primary); color: white; width: 100%; padding: 15px; border: none; border-radius: 12px; font-weight: bold; cursor: pointer;">
+        Place Order Now
+    </button>
 </section>
 
 <div class="services">
@@ -233,7 +237,7 @@ function sendOrder() {
     // We use the full international format for the link: 233505332010
     const whatsappURL = `window.open("https://wa.me/233505332010?text="+msg);
     
-    window.open(window.open("https://wa.me/233505332010?text="+msg);
+    window.open ("https://wa.me/233505332010?text="+msg);
 }
 
 // TIMER
