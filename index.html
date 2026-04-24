@@ -184,22 +184,24 @@ let orderCount = parseInt(localStorage.getItem('GanyoData')) || 1240; // Starts 
 document.getElementById('totalOrders').innerText = orderCount.toLocaleString();
 
 function sendOrder(){
-    const phone = document.getElementById('orderPhone').value;
+    const phoneInput = document.getElementById('orderPhone');
+    const phone = phoneInput ? phoneInput.value : "";
     
-    // Check if variables are set
+    // Safety check: ensure activePkg and activeNet are already defined in your code
     if(typeof activePkg === 'undefined' || !activePkg || !phone){ 
-        alert("Please select a network, a bundle, and enter a phone number."); 
+        alert("Please select your network/bundle and enter a phone number."); 
         return; 
     }
     
+    // Update counter
     orderCount++;
     localStorage.setItem('GanyoData', orderCount);
     document.getElementById('totalOrders').innerText = orderCount.toLocaleString();
 
-    // FIXED: Changed buyerPhone to phone
+    // Fix formatting (using 'phone' instead of 'buyerPhone')
     let formatted = phone.startsWith('0') ? '233' + phone.substring(1) : phone;
 
-    const msg=`🚀 *NEW DATA ORDER*%0A----------------------%0A👤 *Network:* ${activeNet}%0A📱 *Recipient:* ${formatted}%0A📦 *Bundle:* ${activePkg} (${activePrice})%0A----------------------`;
+    const msg = `🚀 *NEW DATA ORDER*%0A----------------------%0A👤 *Network:* ${activeNet}%0A📱 *Recipient:* ${formatted}%0A📦 *Bundle:* ${activePkg} (${activePrice})%0A----------------------`;
     
     window.open("https://wa.me/233505332010?text=" + msg);
 }
