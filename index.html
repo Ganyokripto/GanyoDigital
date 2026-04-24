@@ -231,9 +231,9 @@ function sendOrder() {
 
     // 6. Redirect the user to WhatsApp with your target number (0505332010)
     // We use the full international format for the link: 233505332010
-    const whatsappURL = `https://wa.me{msg}`;
+    const whatsappURL = `window.open("https://wa.me/233505332010?text="+msg);
     
-    window.open(whatsappURL, '_blank');
+    window.open(window.open("https://wa.me/233505332010?text="+msg);
 }
 
 // TIMER
