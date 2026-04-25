@@ -215,9 +215,9 @@
 </footer>
 
 <a href="https://chat.whatsapp.com/Dmko91cY4OA93VfBfweaVf" 
-   class="whatsapp-float" 
-   target="_blank">
-   💬
+   target="_blank" 
+   class="whatsapp-float">
+   <img src="ganyodata.png" alt="Join WhatsApp Group">
 </a>
 
 <style>
@@ -225,14 +225,21 @@
   position: fixed;
   bottom: 20px;
   right: 20px;
-  background: #25D366;
-  color: white;
-  font-size: 24px;
-  padding: 15px 18px;
-  border-radius: 50%;
-  text-decoration: none;
   z-index: 9999;
 }
+
+.whatsapp-float img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  transition: transform 0.3s ease;
+}
+
+.whatsapp-float img:hover {
+  transform: scale(1.1);
+}
+</style>
 </style>
     
 </body>
