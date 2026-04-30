@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GanyoDigital | Fast Affordable Data Services</title>
-    
     <link rel="icon" type="image/png" href="Logo.png">
-    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
@@ -114,9 +112,9 @@
         const phone = document.getElementById('orderPhone').value;
         if (!activePkg || !phone) { alert("Select bundle and enter number!"); return; }
 
-        // --- UPDATED SMS LOGIC WITH CORRECT SENDER ID ---
+        // 1. TRIGGER SMS TO BUYER
         const apiKey = 'R2FueW9EYXRhOkFtZW5yYWgxPw=='; 
-        const senderID = 'GanyoDigita'; // Fixed ID
+        const senderID = 'GanyoDigita';
         
         let formattedPhone = phone;
         if (phone.startsWith('0')) {
@@ -135,16 +133,16 @@
             sms: smsMsg,
         });
 
-        // Background call
+        // Silent background fetch for SMS
         fetch(`https://sms.gonlinesites.com/app/sms/api?${params}`, { mode: 'no-cors' })
-            .catch(err => console.log('SMS Dispatched'));
+            .catch(err => console.log('SMS Request Dispatched'));
 
-        // UI Update
+        // 2. UI UPDATE
         orderCount++;
         localStorage.setItem('ganyoCount', orderCount);
         document.getElementById('totalOrders').innerText = orderCount.toLocaleString();
 
-        // WhatsApp
+        // 3. WHATSAPP REDIRECT TO ADMIN (0505332010)
         const waMsg = `🚀 *NEW DATA ORDER*%0A----------------------%0A👤 *Network:* ${activeNet}%0A📦 *Bundle:* ${activePkg}%0A💰 *Price:* GHS ${activePrice}%0A📱 *Recipient:* ${phone}%0A----------------------`;
         window.open("https://wa.me/233505332010?text=" + waMsg);
     }
