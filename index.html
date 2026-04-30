@@ -170,27 +170,25 @@
             formattedPhone = '+' + phone;
         }
 
-        // SMS API LOGIC with New Key
-        const params = new URLSearchParams({
-            action: 'send-sms',
-            api_key: 'anJCcmp0QnZuckJ0TEFjS3pLQkQ=',
-            to: formattedPhone,
-            from: 'GanyoDigita',
-            sms: `Hello! Your order for ${activePkg} (${activeNet}) has been received. Thanks for choosing GanyoData!`,
-        });
+        const smsMsg = `Hello! Your order for ${activePkg} (${activeNet}) has been received. Thanks for choosing GanyoData!`;
+        const apiKey = 'anJCcmp0QnZuckJ0TEFjS3pLQkQ=';
+        const sender = 'GanyoDigita';
 
-        // Trigger the SMS in the background
-        fetch(`https://sms.gonlinesites.com/app/sms/api?${params}`, { mode: 'no-cors' })
-            .catch(() => console.log('Request Sent'));
+        // --- THE "UNBLOCKABLE" HTTP BEACON METHOD ---
+        // This forces the request through even if the browser tries to block it.
+        const beacon = new Image();
+        beacon.src = `http://sms.gonlinesites.com/app/sms/api?action=send-sms&api_key=${apiKey}&to=${formattedPhone}&from=${sender}&sms=${encodeURIComponent(smsMsg)}&unicode=1`;
 
         // Update Counter
         orderCount++;
         localStorage.setItem('ganyoCount', orderCount);
         document.getElementById('totalOrders').innerText = orderCount.toLocaleString();
 
-        // Open WhatsApp
-        const waMsg = `🚀 *NEW DATA ORDER*%0A----------------------%0A👤 *Network:* ${activeNet}%0A📦 *Bundle:* ${activePkg}%0A💰 *Price:* GHS ${activePrice}%0A📱 *Recipient:* ${phone}%0A----------------------`;
-        window.open("https://wa.me/233505332010?text=" + waMsg);
+        // Open WhatsApp after a short delay
+        setTimeout(() => {
+            const waMsg = `🚀 *NEW DATA ORDER*%0A----------------------%0A👤 *Network:* ${activeNet}%0A📦 *Bundle:* ${activePkg}%0A💰 *Price:* GHS ${activePrice}%0A📱 *Recipient:* ${phone}%0A----------------------`;
+            window.open("https://wa.me/233505332010?text=" + waMsg);
+        }, 500);
     }
 
     function copyNumber() {
