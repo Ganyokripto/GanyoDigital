@@ -3,75 +3,93 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GanyoData | Professional Tracker</title>
+    <title>GanyoData | Dashboard</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root { --primary: #28a745; --accent: #ffc107; --bg: #28a745; }
-        body { font-family: 'Segoe UI', sans-serif; margin: 0; background: var(--bg); color: #fff; padding-bottom: 20px; overflow-x: hidden; }
+        body { font-family: 'Segoe UI', sans-serif; margin: 0; background: var(--bg); color: #fff; padding-bottom: 20px; }
         header { background: #fff; padding: 10px 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
         .logo-box { display: flex; align-items: center; color: var(--primary); font-weight: bold; cursor: pointer; }
         
         section { background: #fff; padding: 1rem; border-radius: 15px; margin: 10px 4%; color: #333; text-align: center; border: 2px solid var(--accent); }
         
+        /* Payment Section */
+        .payment-box { background: #f8f9fa; padding: 10px; border-radius: 10px; border: 1px dashed #ccc; display: flex; justify-content: space-between; align-items: center; cursor: pointer; }
+
+        /* Admin Dashboard */
         .admin-dashboard { background: #1a1a1a; color: #fff; margin: 10px 4%; padding: 15px; border-radius: 15px; display: none; border: 2px solid var(--accent); }
-        .admin-stat { display: flex; justify-content: space-between; margin-bottom: 8px; border-bottom: 1px solid #444; padding-bottom: 4px; font-size: 0.9rem; }
+        .admin-stat { display: flex; justify-content: space-between; margin-bottom: 8px; border-bottom: 1px solid #444; padding-bottom: 4px; }
 
         .network-grid { display: flex; gap: 5px; margin-bottom: 10px; }
-        .net-btn { padding: 10px; border: 1px solid #eee; border-radius: 8px; cursor: pointer; flex: 1; font-size: 0.85rem; background: #fff; font-weight: bold; transition: 0.3s; }
-        .net-btn.active { background: #e8f5e9; border-color: var(--primary); color: var(--primary); transform: scale(1.05); }
+        .net-btn { padding: 10px; border: 1px solid #eee; border-radius: 8px; cursor: pointer; flex: 1; font-size: 0.85rem; background: #fff; font-weight: bold; }
+        .net-btn.active { background: #e8f5e9; border-color: var(--primary); color: var(--primary); }
 
-        /* Scrollable Package Area to save space */
-        .package-container { max-height: 300px; overflow-y: auto; padding-right: 5px; margin-bottom: 10px; border: 1px solid #f0f0f0; border-radius: 10px; padding: 5px; }
-        .package-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
-        .pkg-btn { padding: 10px 2px; border: 1px solid #ddd; border-radius: 8px; cursor: pointer; font-size: 0.75rem; background: #f9f9f9; color: #333; transition: 0.2s; }
-        .pkg-btn.active { background: var(--primary); color: white; font-weight: bold; border-color: var(--primary); box-shadow: 0 3px 8px rgba(40, 167, 69, 0.3); }
+        .package-container { max-height: 250px; overflow-y: auto; margin-bottom: 10px; border: 1px solid #f0f0f0; border-radius: 10px; padding: 5px; }
+        .package-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 5px; }
+        .pkg-btn { padding: 10px 2px; border: 1px solid #ddd; border-radius: 8px; cursor: pointer; font-size: 0.75rem; background: #f9f9f9; color: #333; }
+        .pkg-btn.active { background: var(--primary); color: white; font-weight: bold; }
 
-        input { padding: 15px; width: 100%; border-radius: 12px; border: 2px solid #eee; margin-bottom: 10px; text-align: center; box-sizing: border-box; font-size: 1.1rem; }
-        input:focus { border-color: var(--primary); outline: none; }
-        
-        .order-btn { background: #25d366; color: white; padding: 16px; border-radius: 50px; border: none; width: 100%; font-weight: bold; font-size: 1.2rem; cursor: pointer; box-shadow: 0 4px 10px rgba(37, 211, 102, 0.4); }
-        .order-btn:active { transform: scale(0.98); }
+        input { padding: 12px; width: 100%; border-radius: 10px; border: 1px solid #ccc; margin-bottom: 10px; text-align: center; box-sizing: border-box; }
+        .order-btn { background: #25d366; color: white; padding: 15px; border-radius: 50px; border: none; width: 100%; font-weight: bold; font-size: 1.1rem; cursor: pointer; }
+
+        .ussd-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 5px; }
+        .ussd-card { background: #f8f9fa; padding: 8px; border-radius: 8px; font-size: 0.65rem; border: 1px solid #eee; color: #333; }
+        .ussd-card b { color: var(--primary); display: block; font-size: 0.8rem; }
     </style>
 </head>
 <body>
 
 <header>
     <div class="logo-box" onclick="checkAccess()">
-        <img src="Logo.png" alt="Logo" style="width: 30px; margin-right: 5px;">
+        <img src="Logo.png" alt="Logo" style="width: 25px; margin-right: 5px;">
         GanyoData
     </div>
-    <div style="color: var(--primary); font-size: 0.7rem; font-weight: bold;">ADMIN PANEL <i class="fas fa-lock"></i></div>
+    <div style="color: var(--primary); font-size: 0.7rem; font-weight: bold;">ADMIN <i class="fas fa-shield-alt"></i></div>
 </header>
 
-<!-- DASHBOARD -->
+<!-- DASHBOARD (Hidden) -->
 <div id="adminPanel" class="admin-dashboard">
-    <h3 style="margin:0 0 10px 0; color: var(--accent); font-size: 1rem; text-align: center;">📈 TODAY'S RECAP</h3>
-    <div class="admin-stat"><span>Total Orders:</span> <b id="todayOrders">0</b></div>
-    <div class="admin-stat"><span>Cash Received:</span> <b>GHS <span id="todayRev">0.00</span></b></div>
+    <h3 style="margin:0 0 10px 0; color: var(--accent); font-size: 1rem; text-align: center;">📊 SALES TRACKER</h3>
+    <div class="admin-stat"><span>Orders:</span> <b id="todayOrders">0</b></div>
+    <div class="admin-stat"><span>Revenue:</span> <b>GHS <span id="todayRev">0.00</span></b></div>
     <div class="admin-stat" style="color: #25d366;"><span>Net Profit:</span> <b>GHS <span id="todayProfit">0.00</span></b></div>
-    <button onclick="resetDailyData()" style="width:100%; background:#dc3545; color:white; border:none; padding:10px; border-radius:8px; margin-top:10px; font-weight: bold;">RESET FOR TOMORROW</button>
+    <button onclick="resetDailyData()" style="width:100%; background:#dc3545; color:white; border:none; padding:8px; border-radius:5px; margin-top:10px; cursor:pointer;">Reset Stats</button>
 </div>
 
-<!-- ORDERING SECTION -->
+<!-- PAYMENT INFO -->
+<section>
+    <div class="payment-box" onclick="copyNum('0242366444')">
+        <div style="text-align: left;"><small style="font-size: 0.6rem;">PAY TO:</small><br><strong>0242366444</strong></div>
+        <div style="text-align: right;"><small style="color: var(--primary); font-weight: bold;">M. A. Believe</small> <i class="fas fa-copy" style="color:#ccc;"></i></div>
+    </div>
+</section>
+
+<!-- ORDERING -->
 <section>
     <div class="network-grid">
         <div class="net-btn active" id="btnMTN" onclick="setNet('MTN', this)">MTN</div>
         <div class="net-btn" onclick="setNet('Telecel', this)">Telecel</div>
         <div class="net-btn" onclick="setNet('AirtelTigo', this)">AirtelTigo</div>
     </div>
-
     <div class="package-container">
-        <div id="pkgGrid" class="package-grid">
-            <!-- Packages load here -->
-        </div>
+        <div id="pkgGrid" class="package-grid"></div>
     </div>
+    <input type="number" id="orderPhone" placeholder="Recipient Number">
+    <button class="order-btn" onclick="sendOrder()">Place Order Now</button>
+</section>
 
-    <input type="number" id="orderPhone" placeholder="024 XXX XXXX">
-    <button class="order-btn" onclick="sendOrder()">PROCEED TO WHATSAPP</button>
+<!-- BALANCE CHECK -->
+<section>
+    <h4 style="margin:0 0 10px 0; font-size: 0.8rem; color: var(--primary);">Check Balance</h4>
+    <div class="ussd-grid">
+        <div class="ussd-card" onclick="copyNum('*138#')">MTN<b>*138#</b></div>
+        <div class="ussd-card" onclick="copyNum('*126#')">Telecel<b>*126#</b></div>
+        <div class="ussd-card" onclick="copyNum('*124#')">Airtel<b>*124#</b></div>
+    </div>
 </section>
 
 <script>
-    const ADMIN_PIN = "1234"; // <--- CHANGE THIS CODE
+    const ADMIN_PIN = "1234"; // SET YOUR PIN HERE
 
     const dataStore = {
         'MTN': [
@@ -80,20 +98,19 @@
             {v: '8GB', r: 35, w: 31.2}, {v: '10GB', r: 45, w: 38}, {v: '15GB', r: 68, w: 57},
             {v: '20GB', r: 88, w: 76}, {v: '25GB', r: 105, w: 95}, {v: '30GB', r: 124, w: 114}
         ],
-        'Telecel': [
-            {v: '1GB', r: 5.5, w: 3.9}, {v: '2GB', r: 10, w: 7.8}, {v: '5GB', r: 25, w: 19.5}
-        ],
-        'AirtelTigo': [
-            {v: '1GB', r: 5.5, w: 3.9}, {v: '2GB', r: 10, w: 7.8}, {v: '5GB', r: 25, w: 19.5}
-        ]
+        'Telecel': [{v: '1GB', r: 5.5, w: 3.9}, {v: '2GB', r: 10, w: 7.8}, {v: '5GB', r: 25, w: 19.5}],
+        'AirtelTigo': [{v: '1GB', r: 5.5, w: 3.9}, {v: '2GB', r: 10, w: 7.8}, {v: '5GB', r: 25, w: 19.5}]
     };
 
     let activeNet = 'MTN', activePkg = null;
 
     function checkAccess() {
-        if (prompt("Enter Admin PIN:") === ADMIN_PIN) {
-            const p = document.getElementById('adminPanel');
-            p.style.display = p.style.display === 'block' ? 'none' : 'block';
+        let pin = prompt("Enter Admin PIN to view stats:");
+        if (pin === ADMIN_PIN) {
+            let panel = document.getElementById('adminPanel');
+            panel.style.display = (panel.style.display === 'block') ? 'none' : 'block';
+        } else if (pin !== null) {
+            alert("Wrong PIN");
         }
     }
 
@@ -103,7 +120,6 @@
         btn.classList.add('active');
         const grid = document.getElementById('pkgGrid');
         grid.innerHTML = '';
-        
         dataStore[net].forEach(item => {
             const d = document.createElement('div');
             d.className = 'pkg-btn';
@@ -119,23 +135,15 @@
 
     function sendOrder() {
         const phone = document.getElementById('orderPhone').value;
-        if (!activePkg) { alert("Please select a package first!"); return; }
-        if (!phone || phone.length < 10) { alert("Enter a valid phone number!"); return; }
+        if (!activePkg || !phone) { alert("Select package & enter number!"); return; }
 
-        // Calc Profit
         const profit = activePkg.r - activePkg.w;
-
-        // Save locally
         localStorage.setItem('g_orders', parseInt(localStorage.getItem('g_orders') || 0) + 1);
         localStorage.setItem('g_rev', parseFloat(localStorage.getItem('g_rev') || 0) + activePkg.r);
         localStorage.setItem('g_profit', parseFloat(localStorage.getItem('g_profit') || 0) + profit);
-        
         updateAdminDisplay();
 
-        // Build WhatsApp Message
-        const msg = `🚀 *GANYODATA ORDER*%0A--------------------------%0A*Network:* ${activeNet}%0A*Bundle:* ${activePkg.v}%0A*Price:* GHS ${activePkg.r}%0A*Recipient:* ${phone}%0A--------------------------%0A_Processing..._`;
-        
-        window.open(`https://wa.me/233505332010?text=${msg}`);
+        window.open(`https://wa.me/233505332010?text=${encodeURIComponent('🚀 *NEW ORDER*%0A- Network: '+activeNet+'%0A- Bundle: '+activePkg.v+'%0A- Price: GHS '+activePkg.r+'%0A- Recipient: '+phone)}`);
     }
 
     function updateAdminDisplay() {
@@ -145,12 +153,15 @@
     }
 
     function resetDailyData() {
-        if(confirm("Are you sure you want to clear today's records?")) {
-            localStorage.setItem('g_orders', 0);
-            localStorage.setItem('g_rev', 0);
-            localStorage.setItem('g_profit', 0);
-            updateAdminDisplay();
+        if(confirm("Reset all data?")) {
+            localStorage.clear();
+            location.reload();
         }
+    }
+
+    function copyNum(num) {
+        navigator.clipboard.writeText(num);
+        alert("Copied: " + num);
     }
 
     window.onload = () => {
